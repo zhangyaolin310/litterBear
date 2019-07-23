@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.mgc.dao.mapper.ClueMapper">
+
+  <select id="getPage" resultType="java.lang.String">
+  	select count(*) from clue where 1 = 1
+  	<if test="status != null and status != ''">
+  		<![CDATA[ and status = #{status} ]]>
+  	</if>
+  	<if test="custSource != null and custSource != ''">
+  		<![CDATA[ and cust_source = #{custSource} ]]>
+  	</if>
+  	<if test="personName != null and personName != ''">
+  		<![CDATA[ and person_name = #{personName} ]]>
+  	</if>
+  	<if test="phone != null and phone != ''">
+  		<![CDATA[ and phone = #{phone} ]]>
+  	</if>
+  </select>
+  
+  
+  <select id="selectClueBySomething" resultType="com.zhang.mgc.model.Clue">
+  	select clue_id as clueId,cust_source as custSource,phone,person_name as personName,province,cust_name as custName,
+  	intention_plan as intentionPlan,status,create_time as createTime,assigned_time as assignedTime
+  	from clue where 1 = 1
+  	<if test="status != null and status != ''">
+  		<![CDATA[ and status = #{status} ]]>
+  	</if>
+  	<if test="custSource != null and custSource != ''">
+  		<![CDATA[ and cust_source = #{custSource} ]]>
+  	</if>
+  	<if test="personName != null and personName != ''">
+  		<![CDATA[ and person_name = #{personName} ]]>
+  	</if>
+  	<if test="phone != null and phone != ''">
+  		<![CDATA[ and phone = #{phone} ]]>
+  	</if>
+  	order by create_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+  <select id="selectClueInfo" resultType="com.zhang.mgc.model.Clue">
+  	select clue_id as clueId,cust_source as custSource,phone,person_name as personName,province,cust_name as custName,
+  	intention_plan as intentionPlan,status,create_time as createTime,assigned_time as assignedTime
+  	from clue order by create_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+  <select id="getPlan" resultType="java.lang.String">
+  	select plan_name from plan where plan_type = #{planType}
+  </select>
+  
+  <insert id="insertClue" parameterType="com.zhang.mgc.model.Clue">
+  	insert into clue(cust_source,phone,person_name,province,cust_name,intention_plan,status,create_time)
+  	values(#{custSource},#{phone},#{personName},#{province},#{custName},#{intentionPlan},#{status},#{createTime})
+  </insert>
+  
+  <update id="updateClue">
+  	update clue set status = '已分配',assigned_time = #{assignedTime},follow_status = '待跟进',user_id = #{userId} where clue_id = #{clueId}
+  </update>
+  
+  
+</mapper>

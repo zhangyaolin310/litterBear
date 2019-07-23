@@ -1,0 +1,437 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/pages/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/pages/assets/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/pages/js/bootstrap.min.js"></script>
+<style data-for="result" type="text/css" id="css_newi_result">
+#page{font:14px arial;white-space:nowrap;padding-left:35px}
+#page a,#page strong{display:inline-block;vertical-align:text-bottom;height:66px;text-align:center;line-height:34px;text-decoration:none;overflow:hidden;margin-right:9px;background:#fff}
+#page a{cursor:pointer}
+#page a:hover{background:0 0}
+#page .n:hover,#page a:hover .pc{background:#f2f8ff;border:1px solid #38f}
+#page .n{height:34px;padding:0 18px;border:1px solid #e1e2e3}
+#page span{display:block}
+#page .pc{width:34px;height:34px;border:1px solid #e1e2e3;cursor:pointer}
+#page .fk{width:24px;height:24px;margin-bottom:6px;margin-left:6px;cursor:pointer}
+#page strong .fk,#page strong .pc{cursor:auto}
+#page .fk .c-icon-bear-pn{top:-3px;position:relative}
+#page .fkd .c-icon-bear-pn{top:3px;position:relative}
+#page .fk_cur .c-icon-bear-p{top:-2px;position:relative}
+#page strong .pc{border:0;width:36px;height:36px;line-height:36px}
+#page .nums{display:inline-block;vertical-align:text-bottom;height:36px;line-height:36px;margin-left:10px}
+
+.pagination {
+	padding:5px;
+	font-family: '微软雅黑',Arial,Verdana,arial,serif;
+}
+.pagination ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0;
+}
+.pagination ul li {
+    padding: 0 10px;
+    vertical-align: bottom;
+    display: inline-block;
+    font-size: 14px;
+    min-width: 36px;
+    min-height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: -1px;
+    color: #606266;
+    border: 1px solid #ebebeb;
+    height: 30px;
+    transition: all .3s;
+}
+.pagination ul li:hover {
+    color: #80bd01;
+}
+.pagination ul li.totalPage:hover {
+    color: #606266;
+}
+.pagination  li.active {
+    color: #80bd01;
+}
+.pagination li.disabled {
+    cursor: not-allowed;
+}
+.pagination li.disabled:hover {
+    color: #ccc;
+}
+.pagination li.totalPage {
+    background: transparent;
+    cursor: default;
+    border: none;
+    padding: 0 6px;
+}
+ 
+.pagination li.totalPage:hover {
+    transform: none;
+    background-color: #ffffff;
+}
+.pagination li input {
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border: 0;
+    border-bottom: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    outline: none;
+    padding: 3px 5px;
+    transition: border-color .2s;
+    width: 40px;
+    height: 25px;
+    margin: 0 6px;
+}
+.pagination li input:focus{
+    border-color: #80bd01;
+}
+.pagination{
+    user-select: none;
+}
+.pagination ul:nth-child(2){
+    border-radius: 6px;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+<!--分配弹出框-->
+.black_overlay{ 
+            display: none; 
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=88); 
+        } 
+ .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 25%; 
+            left: 25%; 
+            width: 55%; 
+            height: 55%; 
+            padding: 20px; 
+            border: 10px solid orange; 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+        } 
+</style>
+</head>
+
+<body>
+<div style="padding:0px; margin:0px;">
+ <ul class="breadcrumb" style="  margin:0px; " >
+    	<li>市场</li>
+        <li>销售线索</li>
+    </ul>
+</div>
+<div class="row alert alert-info"  style="margin:0px; padding:3px;" >
+<form action="##" method="post" onsubmit="return false" class="form-horizontal">
+	<div class="col-sm-1" >分配状态:</div>
+    <div class="col-sm-3">
+    	<select class="form-control  input-sm" name="status" id="status">
+    		<option value="全部">全部</option>
+        	<option value="已分配">已分配</option>
+            <option value="待分配">待分配</option>   
+        </select>
+    </div>
+    <div class="col-sm-1">客户来源:</div>
+    <div class="col-sm-3">
+    	<select class="form-control  input-sm" name="custSource" id="custSource">
+    		<option value="全部">全部</option>
+        	<option value="58">58</option>
+            <option value="广告">广告</option>
+        </select>
+    </div>
+    <div class="col-sm-1" >联系人:</div>
+    <div class="col-sm-3">
+    	<input type="text" name="personName" id="personName" class="form-control input-sm"/>
+    </div>
+    <div class="col-sm-1" >联系方式:</div>
+    <div class="col-sm-3">
+    	<input type="text" name="phone" id="phone" class="form-control input-sm"/>
+    </div>
+    <input type="button" class="btn btn-danger" onclick="selectClueBySomething()"  value="查询"/>
+    <input type="button"   class="btn btn-success"   value="添加" onClick="javascript:window.location='/pages/view/system/staffinfo/staffinfo_add.html'"/>
+    </form>
+</div>
+<div class="row" style="padding:15px; padding-top:0px; ">
+	<table class="table  table-condensed table-striped" id="content" border="1">
+    	<tr>
+        	<th>线索流水号</th>
+            <th>客户来源</th>
+            <th>联系人</th>
+            <th>联系方式</th>
+            <th>省份</th>
+            <th>企业名称</th>
+            <th>意向产品</th>
+            <th>分配状态</th>
+            <th>线索创建时间</th>
+            <th>线索分配时间</th>
+             <th>操作</th>
+        </tr>     
+    </table>
+    <div id="light" class="white_content" style="display: none">
+        <div class="row">
+	    	<div class="col-sm-5">
+	            <div class="form-group">
+	            	<label >分配销售人员</label>
+	                		<select class="form-control input-sm" id="userId" name="userId">
+	                        	
+	                        </select>
+	            </div>
+        	</div>
+    	</div>
+        <div class="row">
+    	<div class="col-sm-3 col-sm-offset-4">
+        	<input  type="button" id="submit" class="btn btn-success" onclick = "fenpeiRenwu()" value="确定"/>
+            <input  type="reset" class="btn  btn-danger" onclick = "closeDialog()" value="取消"/>
+        </div>
+    </div>
+    </div> 
+     <!--<div id="fade" class="black_overlay"></div> -->
+    <!--<table id="content"></table> -->
+    <!-- 分页DOM -->
+    <div id="pagination" class="pagination"></div>
+    <!-- 引入分页js -->
+    <script src="/pages/assets/js/pages.js"></script>
+    
+    <script src="/pages/assets/js/ajax.js"></script>
+    <script>
+    window.onload = function() {
+        var url = '/user/clueinfo?page=';
+        var content = document.getElementById('content');
+        var tmp = '';
+ 		var pageTotal = 0;
+ 		var dataTotal = 0;
+        // 进入页面初始化请求第一页数据
+        getData(1);
+        getPage();
+        function getPage(){
+        	$.ajax({
+                url: '/user/getPage?status=&custSource=&personName=&phone=',
+                type: "get",
+                dataType: "json",
+                cache: false, 
+                async :false,
+                success: function(data) {
+                	dataTotal = data;
+                	if(data % 10 == 0){
+                		pageTotal = data / 10;
+                	}else{
+                		pageTotal = parseInt(data/10) + 1;
+                	};
+                },
+                error: function(err) {
+                    alert('请求数据失败');
+                }
+            })
+        }
+ 
+        // 使用ajax函数请求数据并渲染到页面
+        function getData(page) {
+            content.innerHTML = '正在加载...';
+            $.ajax({
+                url: url + page,
+                type: "get",
+                dataType: "json",
+                success: function(data) {
+                    var tableHead = "<tr><th>线索流水号</th><th>客户来源</th><th>联系人</th><th>联系方式</th><th>省份</th><th>企业名称</th><th>意向产品</th><th>分配状态</th><th>线索创建时间</th><th>线索分配时间</th><th>操作</th></tr>";
+                    
+                    for (var i=0;i<data.length;i++){
+                    	if(data[i].status=='待分配'){
+                    		tmp += '<tr><td>'+data[i].clueId+'</td><td>'+data[i].custSource+'</td><td>'+data[i].personName+'</td><td>'+data[i].phone+'</td><td>'+data[i].province+'</td><td>'+data[i].custName+'</td><td>'+data[i].intentionPlan+'</td><td>'+data[i].status+'</td><td>'+data[i].createTime+'</td><td>'+data[i].assignedTime+'</td><td><a  href="JavaScript:void(0)" onclick = "openDialog('+data[i].clueId+')">分配</a></td></tr>';
+                    	}
+                    	else{
+                    		tmp += '<tr><td>'+data[i].clueId+'</td><td>'+data[i].custSource+'</td><td>'+data[i].personName+'</td><td>'+data[i].phone+'</td><td>'+data[i].province+'</td><td>'+data[i].custName+'</td><td>'+data[i].intentionPlan+'</td><td>'+data[i].status+'</td><td>'+data[i].createTime+'</td><td>'+data[i].assignedTime+'</td><td>-</td></tr>';
+                    	};
+                    	 
+                    };
+                    tmp = tableHead + tmp;
+                    content.innerHTML = tmp;
+                    tmp = '';
+                },
+                error: function(err) {
+                    alert('请求数据失败');
+                }
+            })
+        }
+ 
+        
+        // 示例化分页组件
+        new myPagination({
+            id: 'pagination',
+            curPage: 1, //初始页码
+            pageTotal: pageTotal, //总页数
+            pageAmount: 10, //每页多少条
+            dataTotal: dataTotal, //总共多少条数据
+            pageSize: 5, //可选,分页个数
+            showPageTotalFlag: true, //是否显示数据统计
+            showSkipInputFlag: true, //是否支持跳转
+            getPage: function(page) {
+              // 点击分页按钮请求数据
+                getData(page);
+            }
+        })
+    }
+    
+    function selectClueBySomething() {
+    	var url = '/user/clueinfo';
+        var content = document.getElementById('content');
+        var tmp = '';
+        var status = $("#status").val();
+        var custSource = $("#custSource").val();
+        var personName = $("#personName").val();
+        var phone = $("#phone").val();
+        var pageTotal = 0;
+ 		var dataTotal = 0;
+ 
+        // 进入页面初始化请求第一页数据
+        getData(1);
+        getPage();
+        function getPage(){
+        	$.ajax({
+                url: '/user/getPage?status='+status+'&custSource='+custSource+'&personName='+personName+'&phone='+phone,
+                type: "get",
+                dataType: "json",
+                cache: false, 
+                async :false,
+                success: function(data) {
+                	dataTotal = data;
+                	if(data % 10 == 0){
+                		pageTotal = data / 10;
+                	}else{
+                		pageTotal = parseInt(data/10) + 1;
+                	};
+                },
+                error: function(err) {
+                    alert('请求数据失败');
+                }
+            })
+        }
+        function getData(page){
+        	content.innerHTML = '正在加载...';
+        	$.ajax({
+                //几个参数需要注意一下
+                    type: "POST",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: url,//url
+                    data: {"status":status,"custSource":custSource,"personName":personName,"phone":phone,"page":page},
+                    success: function (data) {
+                    	var tableHead = "<tr><th>线索流水号</th><th>客户来源</th><th>联系人</th><th>联系方式</th><th>省份</th><th>企业名称</th><th>意向产品</th><th>分配状态</th><th>线索创建时间</th><th>线索分配时间</th><th>操作</th></tr>";
+                        
+                        for (var i=0;i<data.length;i++){
+                        	if(data[i].status=='待分配'){
+                        		tmp += '<tr><td>'+data[i].clueId+'</td><td>'+data[i].custSource+'</td><td>'+data[i].personName+'</td><td>'+data[i].phone+'</td><td>'+data[i].province+'</td><td>'+data[i].custName+'</td><td>'+data[i].intentionPlan+'</td><td>'+data[i].status+'</td><td>'+data[i].createTime+'</td><td>'+data[i].assignedTime+'</td><td><a  href="JavaScript:void(0)" onclick = "openDialog('+data[i].clueId+')">分配</a></td></tr>';
+                        	}
+                        	else{
+                        		tmp += '<tr><td>'+data[i].clueId+'</td><td>'+data[i].custSource+'</td><td>'+data[i].personName+'</td><td>'+data[i].phone+'</td><td>'+data[i].province+'</td><td>'+data[i].custName+'</td><td>'+data[i].intentionPlan+'</td><td>'+data[i].status+'</td><td>'+data[i].createTime+'</td><td>'+data[i].assignedTime+'</td><td>-</td></tr>';
+                        	};
+                        	 
+                        };
+                        tmp = tableHead + tmp;
+                        content.innerHTML = tmp;
+                        tmp = '';
+                    },
+                    error : function() {
+                        alert("异常！");
+                    }
+                });
+        }
+        
+     // 示例化分页组件
+        new myPagination({
+            id: 'pagination',
+            curPage: 1, //初始页码
+            pageTotal: pageTotal, //总页数
+            pageAmount: 10, //每页多少条
+            dataTotal: dataTotal, //总共多少条数据
+            pageSize: 5, //可选,分页个数
+            showPageTotalFlag: true, //是否显示数据统计
+            showSkipInputFlag: true, //是否支持跳转
+            getPage: function(page) {
+              // 点击分页按钮请求数据
+                getData(page);
+            }
+        })
+    }
+    
+    function openDialog(clueId){
+    	var content = document.getElementById('userId');
+        var tmp = '';
+    	//获取销售人员名单
+    	$.ajax({
+            //几个参数需要注意一下
+                type: "get",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: '/user/getXiaoshou',//url
+                success: function (data) {
+                	var tableHead = '<option>选择销售人员</option>';
+                	for(var i=0;i<data.length;i++){
+                		tmp += '<option value="'+data[i].userId+'">'+data[i].userName+'</option>'
+                	};
+                	tmp = tableHead + tmp;
+                    content.innerHTML = tmp;
+                    tmp = '';
+                    var renwu = 'fenpeiRenwu('+clueId+')'
+                    $("#submit").attr("onclick",renwu);
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        document.getElementById('light').style.display='block';
+        //document.getElementById('fade').style.display='block'
+    }
+    function closeDialog(){
+        document.getElementById('light').style.display='none';
+        //document.getElementById('fade').style.display='none'
+    }
+    
+    function fenpeiRenwu(clueId){
+    	var userId = $("#userId").val();
+    	$.ajax({
+            //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: '/user/updateStatus',//url
+                data:{"clueId":clueId,"userId":userId},
+                success: function (data) {
+                	window.location.href=data.url;
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+    }
+    </script>
+</div>
+
+</body>
+</html>

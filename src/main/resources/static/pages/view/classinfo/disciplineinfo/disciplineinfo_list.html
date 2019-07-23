@@ -1,0 +1,630 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/pages/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/pages/js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/pages/js/bootstrap.min.js"></script>
+<style data-for="result" type="text/css" id="css_newi_result">
+#page{font:14px arial;white-space:nowrap;padding-left:35px}
+#page a,#page strong{display:inline-block;vertical-align:text-bottom;height:66px;text-align:center;line-height:34px;text-decoration:none;overflow:hidden;margin-right:9px;background:#fff}
+#page a{cursor:pointer}
+#page a:hover{background:0 0}
+#page .n:hover,#page a:hover .pc{background:#f2f8ff;border:1px solid #38f}
+#page .n{height:34px;padding:0 18px;border:1px solid #e1e2e3}
+#page span{display:block}
+#page .pc{width:34px;height:34px;border:1px solid #e1e2e3;cursor:pointer}
+#page .fk{width:24px;height:24px;margin-bottom:6px;margin-left:6px;cursor:pointer}
+#page strong .fk,#page strong .pc{cursor:auto}
+#page .fk .c-icon-bear-pn{top:-3px;position:relative}
+#page .fkd .c-icon-bear-pn{top:3px;position:relative}
+#page .fk_cur .c-icon-bear-p{top:-2px;position:relative}
+#page strong .pc{border:0;width:36px;height:36px;line-height:36px}
+#page .nums{display:inline-block;vertical-align:text-bottom;height:36px;line-height:36px;margin-left:10px}
+
+.pagination {
+	padding:5px;
+	font-family: '微软雅黑',Arial,Verdana,arial,serif;
+}
+.pagination ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0;
+}
+.pagination ul li {
+    padding: 0 10px;
+    vertical-align: bottom;
+    display: inline-block;
+    font-size: 14px;
+    min-width: 36px;
+    min-height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: -1px;
+    color: #606266;
+    border: 1px solid #ebebeb;
+    height: 30px;
+    transition: all .3s;
+}
+.pagination ul li:hover {
+    color: #80bd01;
+}
+.pagination ul li.totalPage:hover {
+    color: #606266;
+}
+.pagination  li.active {
+    color: #80bd01;
+}
+.pagination li.disabled {
+    cursor: not-allowed;
+}
+.pagination li.disabled:hover {
+    color: #ccc;
+}
+.pagination li.totalPage {
+    background: transparent;
+    cursor: default;
+    border: none;
+    padding: 0 6px;
+}
+ 
+.pagination li.totalPage:hover {
+    transform: none;
+    background-color: #ffffff;
+}
+.pagination li input {
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border: 0;
+    border-bottom: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    outline: none;
+    padding: 3px 5px;
+    transition: border-color .2s;
+    width: 40px;
+    height: 25px;
+    margin: 0 6px;
+}
+.pagination li input:focus{
+    border-color: #80bd01;
+}
+.pagination{
+    user-select: none;
+}
+.pagination ul:nth-child(2){
+    border-radius: 6px;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+<!--分配弹出框-->
+.black_overlay{ 
+            display: none; 
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=88); 
+        } 
+ .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 25%; 
+            left: 25%; 
+            width: 55%; 
+            height: 55%; 
+            padding: 20px; 
+            border: 10px solid orange; 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+        } 
+</style>
+</head>
+
+<body>
+<div style="padding:0px; margin:0px;">
+ <ul class="breadcrumb" style="  margin:0px; " >
+    	<li>市场</li>
+        <li>合同收款</li>
+    </ul>
+</div>
+<div class="row alert alert-info"  style="margin:0px; padding:3px;" >
+<form action="##" method="post" onsubmit="return false" class="form-inline">
+     <div class="form-group">
+         <label class="" for="activstate">销售：</label>
+		 <select  class="form-control" id="userName">
+            <option>活动状态</option>
+         </select>	
+      </div>
+      <div class="form-group">
+         <label class="" for="activename">客户名称：</label>
+        <input type="email" class="form-control" id="custName" placeholder="请输入客户名称">
+      </div>
+      <div class="form-group">
+         <label class="" for="activename">合同编号：</label>
+        <input type="email" class="form-control" id="contractId" placeholder="请输入合同编号">
+      </div>
+      <div class="form-group">
+         <label class="" for="activstate">服务方式：</label>
+		 <select  class="form-control" id="intentionalServices">
+            <option>活动状态</option>
+         </select>	
+      </div>
+      <div class="form-group">
+         <label class="" for="activename">客户创建日期：</label>
+         <input type="email" class="form-control" id="startCustCreateTime" placeholder="请输入开始时间">
+         <input type="email" class="form-control" id="endCustCreateTime" placeholder="请输入结束时间">
+      </div>
+      <div class="form-group">
+         <label class="" for="activename">演示日期：</label>
+         <input type="email" class="form-control" id="startShowPlanEndTime" placeholder="请输入开始时间">
+         <input type="email" class="form-control" id="endShowPlanEndTime" placeholder="请输入结束时间">
+      </div>
+      <div class="form-group">
+         <label class="" for="activename">合同日期：</label>
+         <input type="email" class="form-control" id="startContractTime" placeholder="请输入开始时间">
+         <input type="email" class="form-control" id="endContractTime" placeholder="请输入结束时间">
+      </div>
+      <div class="form-group">
+         <label class="" for="activename">收款日期：</label>
+         <input type="email" class="form-control" id="startMakeCollectionsTime" placeholder="请输入开始时间">
+         <input type="email" class="form-control" id="endMakeCollectionsTime" placeholder="请输入结束时间">
+      </div>
+      <div class="form-group">
+         <label class="" for="activstate">合同状态：</label>
+		 <select  class="form-control" id="serviceMode">
+            <option>未知</option>
+            <option>待签署</option>
+            <option>待收款</option>
+            <option>部分收款</option>
+            <option>已完成</option>
+         </select>	
+      </div>
+    <input type="button"   class="btn btn-danger"  onclick="selectCustBySomething()"   value="查询"/>
+    </form>
+</div>
+<div class="row" style="padding:15px; padding-top:0px; ">
+	<table class="table  table-condensed table-striped" id="content" border="1">
+    	<tr>
+        	<th>编号</th>
+            <th>活动名称</th>
+            <th>负责人</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>活动状态</th>
+            <th>操作</th>
+        </tr>
+       	<tr>
+        	<td>1001</td>
+            <td>软件大赛</td>
+            <td>张三</td>
+            <td>2014-12-12 12:12:12</td>
+            <td>2014-12-22 12:12:12</td>
+            <td>准备中</td>
+            <th><a href="marketactive_update.html">修改</a> <a href="">删除</a></th>
+        </tr>                  
+    </table>
+    <!-- 操作-->
+    <div id="light" class="white_content" style="display: none">
+        <div class="row">
+	    	<div class="col-sm-5">
+	            <div class="form-group" id="caozuoDiv">
+	            	<label id="caozuo"></label>
+	                		<select class="form-control input-sm" id="userId" name="userId">
+	                        	
+	                        </select>
+	            </div>
+        	</div>
+    	</div>
+        <div class="row">
+    	<div class="col-sm-3 col-sm-offset-4">
+        	<input  type="button" id="submit" class="btn btn-success" onclick = "queDing()" value="确定"/>
+            <input  type="reset" class="btn  btn-danger" onclick = "closeDialog()" value="取消"/>
+        </div>
+    </div>
+    </div> 
+</div>
+<!-- 分页DOM -->
+    <div id="pagination" class="pagination"></div>
+    <!-- 引入分页js -->
+    <script src="/pages/assets/js/pages.js"></script>
+    
+    <script src="/pages/assets/js/ajax.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+	    var url = '/user/contract?page=';
+	    var content = document.getElementById('content');
+	    var tmp = '';
+		var pageTotal = 0;
+		var dataTotal = 0;
+		
+		getXiaoshou();
+		getIntentionalServices();
+	    // 进入页面初始化请求第一页数据
+	    getData(1);
+	    getContractPage();
+	    
+	  	//获取意向服务方式
+	    function getIntentionalServices() {
+	        var contentIntentionalServices = document.getElementById('intentionalServices');
+	        var tmpIntentionalServices = ''
+	        $.ajax({
+	            url: '/user/getIntentionalServices',
+	            type: "get",
+	            dataType: "json",
+	            success: function(data) {
+	            	var selectIntentionalServices = '<option>未知</option>';
+	                for (var i=0;i<data.length;i++){
+	                	tmpIntentionalServices += '<option>'+data[i]+'</option>';
+	                };
+	                tmpIntentionalServices = selectIntentionalServices + tmpIntentionalServices;
+	                contentIntentionalServices.innerHTML = tmpIntentionalServices;
+	                tmpIntentionalServices = '';
+	            },
+	            error: function(err) {
+	                alert('请求数据失败');
+	            }
+	        })
+        }
+	    
+	    //获取销售人员
+	    function getXiaoshou(){
+	    	var contentUser = document.getElementById('userName');
+	        var tmpUser = '';
+	    	//获取销售人员名单
+	    	$.ajax({
+	            //几个参数需要注意一下
+	                type: "get",//方法类型
+	                dataType: "json",//预期服务器返回的数据类型
+	                url: '/user/getXiaoshou',//url
+	                success: function (data) {
+	                	var tableHead = '<option>选择销售人员</option>';
+	                	for(var i=0;i<data.length;i++){
+	                		tmpUser += '<option value="'+data[i].userId+'">'+data[i].userName+'</option>'
+	                	};
+	                	tmpUser = tableHead + tmpUser;
+	                	contentUser.innerHTML = tmpUser;
+	                    tmpUser = '';
+	                },
+	                error : function() {
+	                    alert("异常！");
+	                }
+	            });
+	    }
+	    
+	    //获取数据量
+	    function getContractPage(){
+	    	$.ajax({
+	            url: '/user/getContractPage',
+	            type: "get",
+	            cache: false, 
+                async :false,
+	            dataType: "json",
+	            success: function(data) {
+	            	dataTotal = data;
+	            	if(data % 10 == 0){
+	            		pageTotal = data / 10;
+	            	}else{
+	            		pageTotal = parseInt(data/10) + 1;
+	            	};
+	            },
+	            error: function(err) {
+	                alert('请求数据失败');
+	            }
+	        })
+	    }
+	
+	    // 使用ajax函数请求数据并渲染到页面
+	    function getData(page) {
+	        content.innerHTML = '正在加载...';
+	        $.ajax({
+	            url: url + page,
+	            type: "get",
+	            dataType: "json",
+	            success: function(data) {
+	                var tableHead = "<tr><th>客户编号</th><th>合同编号</th><th>客户名称</th><th>意向产品</th><th>服务方式</th><th>服务价格</th><th>销售</th><th>合同状态</th><th>客户创建时间</th><th>完成演示时间</th><th>合同日期</th><th>最近收款日期</th><th>操作</th></tr>";
+	                
+	                for (var i=0;i<data.length;i++){
+	                	if(data[i].contractStatus=='待签署'){
+	                		tmp += '<tr><td>'+data[i].custId+'</td><td>'+data[i].contractId+'</td><td>'+data[i].custName+'</td><td>'+data[i].showPlanName+'</td><td>'+data[i].intentionalServices+'</td><td>'+data[i].intentionTradingPrice+'</td><td>'+data[i].userName+'</td><td>'+data[i].contractStatus+'</td><td>'+data[i].custCreateTime+'</td><td>'+data[i].showPlanEndTime+'</td><td>'+data[i].contractTime+'</td><td>'+data[i].lastMakeCollectionsTime+'</td><td><a  href="/pages/view/marketactive/marketactive/marketactive_update.html?custId='+data[i].custId+'" >跟进维护  </a><a  href="JavaScript:void(0)" onclick = "stopCust('+data[i].custId+')">终止  </a><a  href="/pages/view/classinfo/disciplineinfo/disciplineinfo_add.html?contractId='+data[i].contractId+'">录入合同</a></td></tr>';
+	                	}
+	                	else if(data[i].contractStatus=='待收款' || data[i].contractStatus=='部分收款'){
+	                		tmp += '<tr><td>'+data[i].custId+'</td><td>'+data[i].contractId+'</td><td>'+data[i].custName+'</td><td>'+data[i].showPlanName+'</td><td>'+data[i].intentionalServices+'</td><td>'+data[i].intentionTradingPrice+'</td><td>'+data[i].userName+'</td><td>'+data[i].contractStatus+'</td><td>'+data[i].custCreateTime+'</td><td>'+data[i].showPlanEndTime+'</td><td>'+data[i].contractTime+'</td><td>'+data[i].lastMakeCollectionsTime+'</td><td><a  href="/pages/view/marketactive/marketactive/marketactive_update.html?custId='+data[i].custId+'" >跟进维护  </a><a  href="JavaScript:void(0)" onclick = "stopCust('+data[i].custId+')">终止  </a><a  href="JavaScript:void(0)" onclick = "makeCollections('+data[i].contractId+')">收款  </a></td></tr>';
+	                	}
+	                	else{
+	                		tmp += '<tr><td>'+data[i].custId+'</td><td>'+data[i].contractId+'</td><td>'+data[i].custName+'</td><td>'+data[i].showPlanName+'</td><td>'+data[i].intentionalServices+'</td><td>'+data[i].intentionTradingPrice+'</td><td>'+data[i].userName+'</td><td>'+data[i].contractStatus+'</td><td>'+data[i].custCreateTime+'</td><td>'+data[i].showPlanEndTime+'</td><td>'+data[i].contractTime+'</td><td>'+data[i].lastMakeCollectionsTime+'</td><td><td>-</td></tr>';
+	                	};
+	                	 
+	                };
+	                tmp = tableHead + tmp;
+	                content.innerHTML = tmp;
+	                tmp = '';
+	            },
+	            error: function(err) {
+	                alert('请求数据失败');
+	            }
+	        })
+	    }
+	
+	    // 示例化分页组件
+	    new myPagination({
+	        id: 'pagination',
+	        curPage: 1, //初始页码
+	        pageTotal: pageTotal, //总页数
+	        pageAmount: 10, //每页多少条
+	        dataTotal: dataTotal, //总共多少条数据
+	        pageSize: 5, //可选,分页个数
+	        showPageTotalFlag: true, //是否显示数据统计
+	        showSkipInputFlag: true, //是否支持跳转
+	        getPage: function(page) {
+	          // 点击分页按钮请求数据
+	            getData(page);
+	        }
+	    })
+	}
+	
+	function selectContractBySomething(){
+		var url = '/user/selectContractBySomething';
+        var content = document.getElementById('content');
+        var tmp = '';
+        var userId = $("#userName").val();
+        var custName = $("#custName").val();
+        var personName = $("#personName").val();
+        var phone = $("#phone").val();
+        var plan = $("#plan").val();
+        var followStatus = $("#followStatus").val();
+        var startAssignedTime = $("#startAssignedTime").val();
+        var endAssignedTime = $("#endAssignedTime").val();
+        var startCustCreateTime = $("#startCustCreateTime").val();
+        var endCustCreateTime = $("#endCustCreateTime").val();
+        var startDefendTime = $("#startDefendTime").val();
+        var endDefendTime = $("#endDefendTime").val();
+        var clue = {};
+        if(userId == '选择销售人员'){
+        	userId = 0;
+        }
+        clue.userId = userId;
+        clue.custName = custName;
+        clue.personName = personName;
+        clue.phone = phone;
+        clue.intentionPlan = plan;
+        clue.followStatus = followStatus;
+        clue.startAssignedTime = startAssignedTime;
+        clue.endAssignedTime = endAssignedTime;
+        clue.startCustCreateTime = startCustCreateTime;
+        clue.endCustCreateTime = endCustCreateTime;
+        clue.startDefendTime = startDefendTime;
+        clue.endDefendTime = endDefendTime;
+        var pageTotal = 0;
+ 		var dataTotal = 0;
+ 
+        // 进入页面初始化请求第一页数据
+        getData(1);
+        getPage();
+        function getPage(){
+        	$.ajax({
+                url: '/user/getCustBySomethingPage',
+                type: "post",
+                dataType: "json",
+                data: JSON.stringify(clue),
+                contentType: "application/json;charset-UTF-8",
+                cache: false, 
+                async :false,
+                success: function(data) {
+                	dataTotal = data.sum;
+                	if(data.sum % 10 == 0){
+                		pageTotal = data.sum / 10;
+                	}else{
+                		pageTotal = parseInt(data.sum/10) + 1;
+                	};
+                },
+                error: function(err) {
+                    alert('请求数据失败');
+                }
+            })
+        }
+        function getData(page){
+        	content.innerHTML = '正在加载...';
+        	clue.page = page;
+        	$.ajax({
+                //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: url,//url
+                    data: JSON.stringify(clue),
+                    contentType: "application/json;charset-UTF-8",
+                    success: function (data) {
+                    	var tableHead = "<tr><th>线索流水号</th><th>客户编号</th><th>客户名称</th><th>联系人</th><th>联系方式</th><th>意向产品</th><th>销售</th><th>跟进状态</th><th>线索分配时间</th><th>客户创建时间</th><th>最近维护时间</th><th>操作</th></tr>";
+    	                
+    	                for (var i=0;i<data.length;i++){
+    	                	if(data[i].followStatus=='待跟进'){
+    	                		tmp += '<tr><td>'+data[i].clueId+'</td><td>'+data[i].custId+'</td><td>'+data[i].custName+'</td><td>'+data[i].personName+'</td><td>'+data[i].phone+'</td><td>'+data[i].intentionPlan+'</td><td>'+data[i].userName+'</td><td>'+data[i].followStatus+'</td><td>'+data[i].assignedTime+'</td><td>'+data[i].custCreateTime+'</td><td>'+data[i].defendTime+'</td><td><a  href="JavaScript:void(0)" onclick = "aginFenpei('+data[i].clueId+','+data[i].userId+')">重新分配  </a><a  href="JavaScript:void(0)" onclick = "stopCust('+data[i].custId+')">终止  </a><a  href="/pages/view/marketactive/marketactive/marketactive_add.html?clueId='+data[i].clueId+'">创建客户</a></td></tr>';
+    	                	}
+    	                	else if(data[i].followStatus=='跟进中'){
+    	                		tmp += '<tr><td>'+data[i].clueId+'</td><td>'+data[i].custId+'</td><td>'+data[i].custName+'</td><td>'+data[i].personName+'</td><td>'+data[i].phone+'</td><td>'+data[i].intentionPlan+'</td><td>'+data[i].userName+'</td><td>'+data[i].followStatus+'</td><td>'+data[i].assignedTime+'</td><td>'+data[i].custCreateTime+'</td><td>'+data[i].defendTime+'</td><td><a  href="JavaScript:void(0)" onclick = "aginFenpei('+data[i].clueId+','+data[i].userId+')">重新分配  </a><a  href="JavaScript:void(0)" onclick = "stopCust('+data[i].custId+')">终止  </a><a  href="/pages/view/marketactive/marketactive/marketactive_update.html?custId='+data[i].custId+'">跟进维护  </a><a  href="JavaScript:void(0)" onclick = "applyShow('+data[i].custId+')">申请演示</a></td></tr>';
+    	                	}
+    	                	else{
+    	                		tmp += '<tr><td>'+data[i].clueId+'</td><td>'+data[i].custId+'</td><td>'+data[i].custName+'</td><td>'+data[i].personName+'</td><td>'+data[i].phone+'</td><td>'+data[i].intentionPlan+'</td><td>'+data[i].userName+'</td><td>'+data[i].followStatus+'</td><td>'+data[i].assignedTime+'</td><td>'+data[i].custCreateTime+'</td><td>'+data[i].defendTime+'</td><td>-</td></tr>';
+    	                	};
+    	                	 
+    	                };
+    	                tmp = tableHead + tmp;
+    	                content.innerHTML = tmp;
+    	                tmp = '';
+                    },
+                    error : function() {
+                        alert("异常！");
+                    }
+                });
+        }
+        
+     // 示例化分页组件
+        new myPagination({
+            id: 'pagination',
+            curPage: 1, //初始页码
+            pageTotal: pageTotal, //总页数
+            pageAmount: 10, //每页多少条
+            dataTotal: dataTotal, //总共多少条数据
+            pageSize: 5, //可选,分页个数
+            showPageTotalFlag: true, //是否显示数据统计
+            showSkipInputFlag: true, //是否支持跳转
+            getPage: function(page) {
+              // 点击分页按钮请求数据
+                getData(page);
+            }
+        })
+	}
+	//重新分配按钮
+	function aginFenpei(clueId,userId){
+    	var content = document.getElementById('userId');
+    	var contentFenpei = document.getElementById('caozuo');
+        var tmp = '';
+    	//获取销售人员名单
+    	$.ajax({
+            //几个参数需要注意一下
+                type: "get",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: '/user/getXiaoshou',//url
+                success: function (data) {
+                	var tableHead = '<option value="选择销售人员">选择销售人员</option>';
+                	for(var i=0;i<data.length;i++){
+                		tmp += '<option value="'+data[i].userId+'">'+data[i].userName+'</option>'
+                	};
+                	tmp = tableHead + tmp;
+                    content.innerHTML = tmp;
+                    contentFenpei.innerHTML = '分配销售人员';
+                    tmp = '';
+                    var renwu = 'queDing('+clueId+')';
+                    $("#submit").attr("onclick",renwu);
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        document.getElementById('light').style.display='block';
+        //document.getElementById('fade').style.display='block'
+    }
+	//申请演示按钮
+	function applyShow(custId){
+    	var contentDiv = document.getElementById('caozuoDiv');
+        contentDiv.innerHTML = '<label id="caozuo">预约演示时间</label><input type="email" class="form-control" id="showAppointTime" placeholder="请输入预约演示时间">';
+        var renwu = 'queDing('+custId+')';
+        $("#submit").attr("onclick",renwu);
+    	
+        document.getElementById('light').style.display='block';
+        //document.getElementById('fade').style.display='block'
+    }
+	//终止按钮
+	function stopCust(custId){
+    	var content = document.getElementById('userId');
+    	var contentStop = document.getElementById('caozuo');
+        var tmp = '';
+    	//获取销售人员名单
+    	$.ajax({
+            //几个参数需要注意一下
+                type: "get",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: '/user/getStopCust',//url
+                success: function (data) {
+                	var tableHead = '<option>选择终止原因</option>';
+                	for(var i=0;i<data.length;i++){
+                		tmp += '<option>'+data[i]+'</option>'
+                	};
+                	tmp = tableHead + tmp;
+                    content.innerHTML = tmp;
+                    contentStop.innerHTML = '终止原因';
+                    tmp = '';
+                    var renwu = 'queDing('+custId+')';
+                    $("#submit").attr("onclick",renwu);
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        document.getElementById('light').style.display='block';
+        //document.getElementById('fade').style.display='block'
+    }
+	//取消按钮
+    function closeDialog(){
+    	var contentDiv = document.getElementById('caozuoDiv');
+    	contentDiv.innerHTML = '<label id="caozuo"></label><select class="form-control input-sm" id="userId" name="userId"></select>'
+        document.getElementById('light').style.display='none';
+        //document.getElementById('fade').style.display='none'
+    }
+    //确定按钮
+    function queDing(Id){
+    	var caozuoContent = $("#caozuo").val();
+    	if(document.getElementById('caozuo').innerHTML == '分配销售人员'){
+    		var userId = $("#userId").val();
+        	$.ajax({
+                //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: '/user/updateStatusAgain',//url
+                    data:{"clueId":Id,"userId":userId},
+                    success: function (data) {
+                    	window.location.href=data.url;
+                    },
+                    error : function() {
+                        alert("异常！");
+                    }
+                });
+    	}else if(document.getElementById('caozuo').innerHTML == '预约演示时间'){
+    		var showAppointTime = $("#showAppointTime").val();
+        	$.ajax({
+                //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: '/user/updateShowStatus',//url
+                    data:{"custId":Id,"showAppointTime":showAppointTime},
+                    success: function (data) {
+                    	window.location.href=data.url;
+                    },
+                    error : function() {
+                        alert("请输入正确的时间！");
+                    }
+                });
+    	}else{
+    		var userId = $("#userId").val();
+    		var stopHuanjie = '合同收款';
+        	$.ajax({
+                //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: '/user/updateStopYuanyin',//url
+                    data:{"custId":Id,"stopYuanyin":userId,"stopHuanjie":stopHuanjie},
+                    success: function (data) {
+                    	window.location.href=data.url;
+                    },
+                    error : function() {
+                        alert("异常！");
+                    }
+                });
+    	}
+    }
+</script>
+</body>
+</html>

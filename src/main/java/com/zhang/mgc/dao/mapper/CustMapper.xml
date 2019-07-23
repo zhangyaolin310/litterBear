@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.mgc.dao.mapper.CustMapper">
+
+  
+  <select id="selectCustInfo" resultType="com.zhang.mgc.model.Clue">
+  	select cl.user_id as userId,cl.clue_id as clueId,cu.cust_id as custId,
+	case when cu.cust_name is null then cl.cust_name else cu.cust_name end as custName,
+	case when cu.person_name is null then cl.person_name else cu.person_name end as personName,
+	case when cu.person_phone is null then cl.phone else cu.person_phone end phone,
+ 	case when cu.intention_plan is null then cl.intention_plan else cu.intention_plan end as intentionPlan,
+ 	us.user_name as userName,cl.follow_status as followStatus,cl.assigned_time as assignedTime,
+ 	cu.create_time as custCreateTime,cu.defend_time as defendTime
+  	from clue cl
+  	left join customer cu
+  	on cl.clue_id = cu.clue_id
+  	left join user us
+  	on cl.user_id = us.user_id
+  	where cl.follow_status is not null and (cu.stop_huanjie is null or cu.stop_huanjie = '')
+  	order by cu.create_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+  <select id="getFollowCustPage" resultType="java.lang.String">
+  	select count(*) from 
+  	(select cl.clue_id as clueId,cu.cust_id as custId,cl.cust_name as custName,cl.person_name as personName,cl.phone,
+  	cu.intention_plan as intentionPlan,us.user_name as userName,cl.follow_status as followStatus,cl.assigned_time as assignedTime,
+  	cu.create_time as custCreateTime,cu.defend_time as defendTime
+  	from clue cl
+  	left join customer cu
+  	on cl.clue_id = cu.clue_id
+  	left join user us
+  	on cl.user_id = us.user_id
+  	where cl.follow_status is not null and (cu.stop_huanjie is null or cu.stop_huanjie = '')) a
+  </select>
+  
+  <select id="selectCustBySomething" parameterType="com.zhang.mgc.model.Clue" resultType="com.zhang.mgc.model.Clue">
+  	select cl.user_id as userId,cl.clue_id as clueId,cu.cust_id as custId,
+	case when cu.cust_name is null then cl.cust_name else cu.cust_name end as custName,
+	case when cu.person_name is null then cl.person_name else cu.person_name end as personName,
+	case when cu.person_phone is null then cl.phone else cu.person_phone end phone,
+ 	case when cu.intention_plan is null then cl.intention_plan else cu.intention_plan end as intentionPlan,
+ 	us.user_name as userName,cl.follow_status as followStatus,cl.assigned_time as assignedTime,
+ 	cu.create_time as custCreateTime,cu.defend_time as defendTime
+  	from clue cl
+  	left join customer cu
+  	on cl.clue_id = cu.clue_id
+  	left join user us
+  	on cl.user_id = us.user_id
+  	where cl.follow_status is not null and (cu.stop_huanjie is null or cu.stop_huanjie = '')
+  	<if test="userId != null and userId != ''">
+  		<![CDATA[ and cl.user_id = #{userId} ]]>
+  	</if>
+  	<if test="custName != null and custName != ''">
+  		<![CDATA[ and cu.cust_name = #{custName} ]]>
+  	</if>
+  	<if test="personName != null and personName != ''">
+  		<![CDATA[ and cu.person_name = #{personName} ]]>
+  	</if>
+  	<if test="phone != null and phone != ''">
+  		<![CDATA[ and cu.phone = #{phone} ]]>
+  	</if>
+  	<if test="intentionPlan != null and intentionPlan != ''">
+  		<![CDATA[ and cu.intention_plan = #{intentionPlan} ]]>
+  	</if>
+  	<if test="followStatus != null and followStatus != ''">
+  		<![CDATA[ and cl.follow_status = #{followStatus} ]]>
+  	</if>
+  	<if test="startAssignedTime != null and startAssignedTime != ''">
+  		<![CDATA[ and cl.assigned_time >= #{startAssignedTime} ]]>
+  	</if>
+  	<if test="endAssignedTime != null and endAssignedTime != ''">
+  		<![CDATA[ and cl.assigned_time <= #{endAssignedTime} ]]>
+  	</if>
+  	<if test="startCustCreateTime != null and startCustCreateTime != ''">
+  		<![CDATA[ and cu.create_time >= #{startCustCreateTime} ]]>
+  	</if>
+  	<if test="endCustCreateTime != null and endCustCreateTime != ''">
+  		<![CDATA[ and cu.create_time <= #{endCustCreateTime} ]]>
+  	</if>
+  	<if test="startDefendTime != null and startDefendTime != ''">
+  		<![CDATA[ and cu.defend_time >= #{startDefendTime} ]]>
+  	</if>
+  	<if test="endDefendTime != null and endDefendTime != ''">
+  		<![CDATA[ and cu.defend_time <= #{endDefendTime} ]]>
+  	</if>
+  	order by cu.create_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+  <select id="getCustBySomethingPage" parameterType="com.zhang.mgc.model.Clue" resultType="java.lang.String">
+  	select count(*) from(
+  	select cl.user_id as userId,cl.clue_id as clueId,cu.cust_id as custId,
+	case when cu.cust_name is null then cl.cust_name else cu.cust_name end as custName,
+	case when cu.person_name is null then cl.person_name else cu.person_name end as personName,
+	case when cu.person_phone is null then cl.phone else cu.person_phone end phone,
+ 	case when cu.intention_plan is null then cl.intention_plan else cu.intention_plan end as intentionPlan,
+ 	us.user_name as userName,cl.follow_status as followStatus,cl.assigned_time as assignedTime,
+ 	cu.create_time as custCreateTime,cu.defend_time as defendTime
+  	from clue cl
+  	left join customer cu
+  	on cl.clue_id = cu.clue_id
+  	left join user us
+  	on cl.user_id = us.user_id
+  	where cl.follow_status is not null and (cu.stop_huanjie is null or cu.stop_huanjie = '')
+  	<if test="userId != null and userId != ''">
+  		<![CDATA[ and cl.user_id = #{userId} ]]>
+  	</if>
+  	<if test="custName != null and custName != ''">
+  		<![CDATA[ and cu.cust_name = #{custName} ]]>
+  	</if>
+  	<if test="personName != null and personName != ''">
+  		<![CDATA[ and cu.person_name = #{personName} ]]>
+  	</if>
+  	<if test="phone != null and phone != ''">
+  		<![CDATA[ and cu.phone = #{phone} ]]>
+  	</if>
+  	<if test="intentionPlan != null and intentionPlan != ''">
+  		<![CDATA[ and cu.intention_plan = #{intentionPlan} ]]>
+  	</if>
+  	<if test="followStatus != null and followStatus != ''">
+  		<![CDATA[ and cl.follow_status = #{followStatus} ]]>
+  	</if>
+  	<if test="startAssignedTime != null and startAssignedTime != ''">
+  		<![CDATA[ and cl.assigned_time >= #{startAssignedTime} ]]>
+  	</if>
+  	<if test="endAssignedTime != null and endAssignedTime != ''">
+  		<![CDATA[ and cl.assigned_time <= #{endAssignedTime} ]]>
+  	</if>
+  	<if test="startCustCreateTime != null and startCustCreateTime != ''">
+  		<![CDATA[ and cu.create_time >= #{startCustCreateTime} ]]>
+  	</if>
+  	<if test="endCustCreateTime != null and endCustCreateTime != ''">
+  		<![CDATA[ and cu.create_time <= #{endCustCreateTime} ]]>
+  	</if>
+  	<if test="startDefendTime != null and startDefendTime != ''">
+  		<![CDATA[ and cu.defend_time >= #{startDefendTime} ]]>
+  	</if>
+  	<if test="endDefendTime != null and endDefendTime != ''">
+  		<![CDATA[ and cu.defend_time <= #{endDefendTime} ]]>
+  	</if>
+  	) a
+  </select>
+  
+  <update id="updateStatusAgain">
+  	update clue set user_id = #{userId} where clue_id = #{clueId}
+  </update>
+  
+  <update id="updateClueFollowStatus">
+  	update clue set follow_status = #{followStatus}   where clue_id = #{clueId}
+  </update>
+  
+  <select id="getMainBusi" resultType="java.lang.String">
+  	select main_busi_name from main_busi
+  </select>
+  
+  <select id="getBusiType" resultType="java.lang.String">
+  	select busi_type_name from busi_type
+  </select>
+  
+  <select id="getOperResources" resultType="java.lang.String">
+  	select oper_resources_name from oper_resources
+  </select>
+  
+  <select id="getPersonShenfen" resultType="java.lang.String">
+  	select person_shenfen_name from person_shenfen
+  </select>
+  
+  <select id="getPurchMotiva" resultType="java.lang.String">
+  	select purch_motiva_name from purch_motiva
+  </select>
+  
+  <select id="getPurchMethod" resultType="java.lang.String">
+  	select purch_method_name from purch_method
+  </select>
+  
+  <select id="getImportRequire" resultType="java.lang.String">
+  	select import_require_name from import_require
+  </select>
+  
+  <insert id="insertCust" parameterType="com.zhang.mgc.model.Cust">
+  	insert into customer(clue_id,cust_name,busi_type,main_busi,oper_resources,stock_sizes,plant_area,day_car_amount,
+  	day_ave_order,person_name,sex,person_shenfen,person_zhiwei,person_phone,other_phone1,other_phone2,other_phone3,
+  	other_person_name,purch_motiva,purch_method,intention_plan,cust_budget,line_time_require,import_require,remarks,
+  	remarks_other,defend_time,create_time)
+  	values(#{clueId},#{custName},#{busiType},#{mainBusi},#{operResources},#{stockSizes},#{plantArea},#{dayCarAmount},
+  	#{dayAveOrder},#{personName},#{sex},#{personShenfen},#{personZhiwei},#{personPhone},#{otherPhone1},#{otherPhone2},#{otherPhone3},
+  	#{otherPersonName},#{purchMotiva},#{purchMethod},#{intentionPlan},#{custBudget},#{lineTimeRequire},#{importRequire},#{remarks},
+  	#{remarksOther},#{defendTime},#{createTime})
+  </insert>
+  
+  <select id="getClueById" resultType="com.zhang.mgc.model.Clue">
+  	select cust_name as custName,person_name as personName,phone from clue where clue_id =#{clueId}
+  </select>
+  
+  <select id="getCustById" resultType="com.zhang.mgc.model.Cust">
+  	select clue_id as clueId,cust_name as custName,busi_type as busiType,main_busi as mainBusi,oper_resources as operResources,stock_sizes as stockSizes,
+  		plant_area as plantArea,day_car_amount as dayCarAmount,day_ave_order as dayAveOrder,person_name as personName,sex,person_shenfen as personShenfen,
+  		person_zhiwei as personZhiwei,person_phone as personPhone,other_phone1 as otherPhone1,other_phone2 as otherPhone2,other_phone3 as otherPhone3,
+  		other_person_name as otherPersonName,purch_motiva as purchMotiva,purch_method as purchMethod,intention_plan as intentionPlan,
+  		cust_budget as custBudget,line_time_require as lineTimeRequire,import_require as importRequire,remarks as remarks,remarks_other as remarksOther
+  	from customer where cust_id =#{custId}
+  </select>
+  
+  <update id="updateCust" parameterType="com.zhang.mgc.model.Cust">
+  	update customer set cust_name = #{custName},busi_type = #{busiType},main_busi = #{mainBusi},oper_resources = #{operResources},
+  	stock_sizes = #{stockSizes},plant_area = #{plantArea},day_car_amount = #{dayCarAmount},day_ave_order = #{dayAveOrder},person_name = #{personName},
+  	sex = #{sex},person_shenfen = #{personShenfen},person_zhiwei = #{personZhiwei},person_phone = #{personPhone},other_phone1 = #{otherPhone1},
+  	other_phone2 = #{otherPhone2},other_phone3 = #{otherPhone3},other_person_name = #{otherPersonName},purch_motiva = #{purchMotiva},purch_method = #{purchMethod},
+  	intention_plan = #{intentionPlan},cust_budget = #{custBudget},line_time_require = #{lineTimeRequire},import_require = #{importRequire},remarks = #{remarks},
+  	remarks_other = #{remarksOther},defend_time = #{defendTime}
+  	where cust_id = #{custId}
+  </update>
+  
+  <insert id="insertDefend" parameterType="com.zhang.mgc.model.Cust">
+  	insert into defend(user_name,defend_time,remarks_defend,cust_id,cust_name)
+  	values(#{defendPerson},#{defendTime},#{remarksDefend},#{custId},#{custName})
+  </insert>
+  
+  <update id="updateClueFollowStatusBycust">
+  	update clue set follow_status = #{followStatus} where clue_id = (select clue_id from customer where cust_id = #{custId})
+  </update>
+  
+  <update id="updateShowStatus">
+  	update customer set show_status = #{showStatus},show_appoint_time = #{showAppointTime},show_end_time = null where cust_id = #{custId}
+  </update>
+  
+  <select id="getStopCust" resultType="java.lang.String">
+  	select stop_name from stop
+  </select>
+  
+  <update id="updateStopYuanyin">
+  	update customer set cust_stop_time = #{custStopTime},stop_huanjie = #{stopHuanjie},stop_yuanyin = #{stopYuanyin}
+  	where cust_id = #{custId}
+  </update>
+  
+  <select id="getDefend" resultType="com.zhang.mgc.model.Defend">
+  	select defend_id as defendId,cust_id as custId,cust_name as custName,user_name as userName,defend_time as defendTime,remarks_defend as remarksDefend
+  	from defend
+  	order by defend_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+  <select id="getDefendPage" resultType="java.lang.String">
+  	select count(*) from defend
+  	where 1=1
+  	<if test="userName != null and userName != ''">
+  		<![CDATA[ and user_name = #{userName} ]]>
+  	</if>
+  	<if test="defendTime != null and defendTime != ''">
+  		<![CDATA[ and defend_time >= #{defendTime} ]]>
+  	</if>
+  </select>
+  
+  <select id="selectDefendBySomething" resultType="com.zhang.mgc.model.Defend">
+  	select defend_id as defendId,cust_id as custId,cust_name as custName,user_name as userName,defend_time as defendTime,remarks_defend as remarksDefend
+  	from defend
+  	where 1=1
+  	<if test="userName != null and userName != ''">
+  		<![CDATA[ and user_name = #{userName} ]]>
+  	</if>
+  	<if test="defendTime != null and defendTime != ''">
+  		<![CDATA[ and defend_time >= #{defendTime} ]]>
+  	</if>
+  	order by defend_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+</mapper>

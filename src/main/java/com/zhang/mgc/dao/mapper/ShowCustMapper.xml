@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.mgc.dao.mapper.ShowCustMapper">
+
+  
+  <select id="getShowCust" resultType="com.zhang.mgc.model.Clue">
+  	select cl.user_id as userId,cl.clue_id as clueId,cu.cust_id as custId,
+	case when cu.cust_name is null then cl.cust_name else cu.cust_name end as custName,
+	case when cu.person_name is null then cl.person_name else cu.person_name end as personName,
+	case when cu.person_phone is null then cl.phone else cu.person_phone end phone,
+ 	case when cu.intention_plan is null then cl.intention_plan else cu.intention_plan end as intentionPlan,
+ 	us.user_name as userName,cu.show_status as showStatus,cu.show_end_time as showEndTime,
+ 	cu.create_time as custCreateTime,cu.show_appoint_time as showAppointTime
+  	from clue cl
+  	left join customer cu
+  	on cl.clue_id = cu.clue_id
+  	left join user us
+  	on cl.user_id = us.user_id
+  	where cu.show_status is not null and (cu.stop_huanjie is null or cu.stop_huanjie = '')
+  	order by cu.create_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+  <select id="getShowCustPage" resultType="java.lang.String">
+  	select count(*) from (
+  	select cl.user_id as userId,cl.clue_id as clueId,cu.cust_id as custId,
+	case when cu.cust_name is null then cl.cust_name else cu.cust_name end as custName,
+	case when cu.person_name is null then cl.person_name else cu.person_name end as personName,
+	case when cu.person_phone is null then cl.phone else cu.person_phone end phone,
+ 	case when cu.intention_plan is null then cl.intention_plan else cu.intention_plan end as intentionPlan,
+ 	us.user_name as userName,cu.show_status as showStatus,cu.show_end_time as showEndTime,
+ 	cu.create_time as custCreateTime,cu.show_appoint_time as showAppointTime
+  	from clue cl
+  	left join customer cu
+  	on cl.clue_id = cu.clue_id
+  	left join user us
+  	on cl.user_id = us.user_id
+  	where cu.show_status is not null and (cu.stop_huanjie is null or cu.stop_huanjie = '') )a
+  </select>
+  
+  <select id="selectShowCustBySomething" parameterType="com.zhang.mgc.model.Clue" resultType="com.zhang.mgc.model.Clue">
+  	select cl.user_id as userId,cl.clue_id as clueId,cu.cust_id as custId,
+	case when cu.cust_name is null then cl.cust_name else cu.cust_name end as custName,
+	case when cu.person_name is null then cl.person_name else cu.person_name end as personName,
+	case when cu.person_phone is null then cl.phone else cu.person_phone end phone,
+ 	case when cu.intention_plan is null then cl.intention_plan else cu.intention_plan end as intentionPlan,
+ 	us.user_name as userName,cu.show_status as showStatus,cu.show_end_time as showEndTime,
+ 	cu.create_time as custCreateTime,cu.show_appoint_time as showAppointTime
+  	from clue cl
+  	left join customer cu
+  	on cl.clue_id = cu.clue_id
+  	left join user us
+  	on cl.user_id = us.user_id
+  	where cu.show_status is not null and (cu.stop_huanjie is null or cu.stop_huanjie = '')
+  	<if test="userId != null and userId != ''">
+  		<![CDATA[ and cl.user_id = #{userId} ]]>
+  	</if>
+  	<if test="custName != null and custName != ''">
+  		<![CDATA[ and cu.cust_name = #{custName} ]]>
+  	</if>
+  	<if test="personName != null and personName != ''">
+  		<![CDATA[ and cu.person_name = #{personName} ]]>
+  	</if>
+  	<if test="phone != null and phone != ''">
+  		<![CDATA[ and cu.phone = #{phone} ]]>
+  	</if>
+  	<if test="intentionPlan != null and intentionPlan != ''">
+  		<![CDATA[ and cu.intention_plan = #{intentionPlan} ]]>
+  	</if>
+  	<if test="showStatus != null and showStatus != ''">
+  		<![CDATA[ and cu.show_status = #{showStatus} ]]>
+  	</if>
+  	<if test="startShowAppointTime != null and startShowAppointTime != ''">
+  		<![CDATA[ and cu.show_appoint_time >= #{startShowAppointTime} ]]>
+  	</if>
+  	<if test="endShowAppointTime != null and endShowAppointTime != ''">
+  		<![CDATA[ and cu.show_appoint_time <= #{endShowAppointTime} ]]>
+  	</if>
+  	<if test="startCustCreateTime != null and startCustCreateTime != ''">
+  		<![CDATA[ and cu.create_time >= #{startCustCreateTime} ]]>
+  	</if>
+  	<if test="endCustCreateTime != null and endCustCreateTime != ''">
+  		<![CDATA[ and cu.create_time <= #{endCustCreateTime} ]]>
+  	</if>
+  	<if test="startShowEndTime != null and startShowEndTime != ''">
+  		<![CDATA[ and cu.show_end_time >= #{startShowEndTime} ]]>
+  	</if>
+  	<if test="endShowEndTime != null and endShowEndTime != ''">
+  		<![CDATA[ and cu.show_end_time <= #{endShowEndTime} ]]>
+  	</if>
+  	order by cu.create_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+  <select id="getShowCustBySomethingPage" parameterType="com.zhang.mgc.model.Clue" resultType="java.lang.String">
+  	select count(*) from (
+  	select cl.user_id as userId,cl.clue_id as clueId,cu.cust_id as custId,
+	case when cu.cust_name is null then cl.cust_name else cu.cust_name end as custName,
+	case when cu.person_name is null then cl.person_name else cu.person_name end as personName,
+	case when cu.person_phone is null then cl.phone else cu.person_phone end phone,
+ 	case when cu.intention_plan is null then cl.intention_plan else cu.intention_plan end as intentionPlan,
+ 	us.user_name as userName,cu.show_status as showStatus,cu.show_end_time as showEndTime,
+ 	cu.create_time as custCreateTime,cu.show_appoint_time as showAppointTime
+  	from clue cl
+  	left join customer cu
+  	on cl.clue_id = cu.clue_id
+  	left join user us
+  	on cl.user_id = us.user_id
+  	where cu.show_status is not null and (cu.stop_huanjie is null or cu.stop_huanjie = '')
+  	<if test="userId != null and userId != ''">
+  		<![CDATA[ and cl.user_id = #{userId} ]]>
+  	</if>
+  	<if test="custName != null and custName != ''">
+  		<![CDATA[ and cu.cust_name = #{custName} ]]>
+  	</if>
+  	<if test="personName != null and personName != ''">
+  		<![CDATA[ and cu.person_name = #{personName} ]]>
+  	</if>
+  	<if test="phone != null and phone != ''">
+  		<![CDATA[ and cu.phone = #{phone} ]]>
+  	</if>
+  	<if test="intentionPlan != null and intentionPlan != ''">
+  		<![CDATA[ and cu.intention_plan = #{intentionPlan} ]]>
+  	</if>
+  	<if test="showStatus != null and showStatus != ''">
+  		<![CDATA[ and cu.show_status = #{showStatus} ]]>
+  	</if>
+  	<if test="startShowAppointTime != null and startShowAppointTime != ''">
+  		<![CDATA[ and cu.show_appoint_time >= #{startShowAppointTime} ]]>
+  	</if>
+  	<if test="endShowAppointTime != null and endShowAppointTime != ''">
+  		<![CDATA[ and cu.show_appoint_time <= #{endShowAppointTime} ]]>
+  	</if>
+  	<if test="startCustCreateTime != null and startCustCreateTime != ''">
+  		<![CDATA[ and cu.create_time >= #{startCustCreateTime} ]]>
+  	</if>
+  	<if test="endCustCreateTime != null and endCustCreateTime != ''">
+  		<![CDATA[ and cu.create_time <= #{endCustCreateTime} ]]>
+  	</if>
+  	<if test="startShowEndTime != null and startShowEndTime != ''">
+  		<![CDATA[ and cu.show_end_time >= #{startShowEndTime} ]]>
+  	</if>
+  	<if test="endShowEndTime != null and endShowEndTime != ''">
+  		<![CDATA[ and cu.show_end_time <= #{endShowEndTime} ]]>
+  	</if>
+  	) a
+  </select>
+  
+  <select id="getIntentionalServices" resultType="java.lang.String">
+  	select intentional_services_name from intentional_services
+  </select>
+  
+  <insert id="insertShowPlan" parameterType="com.zhang.mgc.model.ShowPlan">
+  	insert into show_plan(cust_id,show_plan_name,show_plan_start_time,show_plan_end_time,cust_name_and_shenfen,objection_reply,function_matching,seafile_directorie,
+  	business_intention,intentional_services,intentional_delivery_time,intention_trading_price,other_requirement)
+  	values(#{custId},#{showPlanName},#{showPlanStartTime},#{showPlanEndTime},#{custNameAndShenfen},#{objectionReply},#{functionMatching},
+  	#{seafileDirectorie},#{businessIntention},#{intentionalServices},#{intentionalDeliveryTime},#{intentionTradingPrice},#{otherRequirement})
+  </insert>
+  
+  <update id="updateShowStatus">
+  	update customer set show_status = '已演示',show_end_time = #{showEndTime} where cust_id = #{custId}
+  </update>
+  
+  <update id="updateOnlyShowStatus">
+  	update customer set show_status = '已申请合同',contract_status = '待签署' where cust_id = #{custId}
+  </update>
+  
+</mapper>

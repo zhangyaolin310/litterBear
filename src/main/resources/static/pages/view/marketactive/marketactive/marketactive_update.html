@@ -1,0 +1,733 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/pages/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/pages/js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/pages/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div style="padding:0px; margin:0px;">
+ <ul class="breadcrumb" style="  margin:0px; " >
+    	<li><a href="#">市场</a></li>
+        <li>客户跟进</li>
+        <li>跟进维护</li>
+    </ul>
+</div>
+
+<form action="##" method="post" onsubmit="return false" class="form-horizontal">
+    <h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">基本信息</h5>
+	<div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※客户名称</label>
+                <div class="col-sm-9">
+                	<input type="text" name="custName" id="custName" class="form-control input-sm" placeholder="请输入客户名称"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※企业类型</label>
+                <div class="col-sm-5">
+                	<select name="busiType" id="busiType" class="form-control input-sm">
+                    	<option value="未知">未知</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--开始 -->
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※主营业务</label>
+                <div class="col-sm-5">
+                	<select name="mainBusi" id="mainBusi" class="form-control input-sm">
+                    	
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※运作资源主类型</label>
+                <div class="col-sm-5">
+                	<select name="operResources" id="operResources" class="form-control input-sm">
+                    	<option value="未知">未知</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※站点/仓库数量</label>
+                <div class="col-sm-6">
+                	<input type="text" name="stockSizes" id="stockSizes" class="form-control input-sm" placeholder="请输入站点/仓库数量"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※仓库面积</label>
+                <div class="col-sm-6">
+                	<input type="text" name="plantArea" id="plantArea" class="form-control input-sm" placeholder="请输入仓库面积"/>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※日用车辆数量</label>
+                <div class="col-sm-6">
+                	<input type="text" name="dayCarAmount" id="dayCarAmount" class="form-control input-sm" placeholder="请输入日用车辆数量"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※日均订单量</label>
+                <div class="col-sm-6">
+                	<input type="text" name="dayAveOrder" id="dayAveOrder" class="form-control input-sm" placeholder="请输入日均订单量"/>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <div class="row">
+    	<div class="col-sm-10">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">备注内容</label>
+                <div class="col-sm-9">
+                	<textarea class="form-control" id="remarks"></textarea>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+ <!-- ************************************************************************ -->
+ 	<div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※联系人</label>
+                <div class="col-sm-5">
+                	<input type="text" name="personName" id="personName" class="form-control input-sm" placeholder="请输入联系人"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+	        <div class="form-group">
+	            <label class="col-sm-3 control-label">※性别</label>
+	            <div class="col-sm-5">
+	            	<select name="sex" id="sex" class="form-control input-sm">
+	                    <option value="未知">未知</option>
+	                    <option value="男">男</option>
+	                    <option value="女">女</option>
+	                </select>
+	             </div>
+	         </div>
+	     </div>
+    </div>
+    <!--开始 -->
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※联系人身份</label>
+                <div class="col-sm-5">
+                	<select name="personShenfen" id="personShenfen" class="form-control input-sm">
+                    	<option value="未知">未知</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※联系人职位</label>
+                <div class="col-sm-9">
+                	<input type="text" name="personZhiwei" id="personZhiwei" class="form-control input-sm" placeholder="请输入联系人职位"/>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※联系方式</label>
+                <div class="col-sm-6">
+                	<input type="text" name="personPhone" id="personPhone" class="form-control input-sm" placeholder="请输入联系方式"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">其他联系方式1</label>
+                <div class="col-sm-6">
+                	<input type="text" name="otherPhone1" id="otherPhone1" class="form-control input-sm" placeholder="请输入其他联系方式1"/>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">其他联系方式2</label>
+                <div class="col-sm-6">
+                	<input type="text" name="otherPhone2" id="otherPhone2" class="form-control input-sm" placeholder="请输入其他联系方式2"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">其他联系方式3</label>
+                <div class="col-sm-6">
+                	<input type="text" name="otherPhone3" id="otherPhone3" class="form-control input-sm" placeholder="请输入其他联系方式3"/>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">其他可用联系人</label>
+                <div class="col-sm-6">
+                	<input type="text" name="otherPersonName" id="otherPersonName" class="form-control input-sm" placeholder="请输入其他可用联系人"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※采购动机</label>
+                <div class="col-sm-5">
+                	<select name="purchMotiva" id="purchMotiva" class="form-control input-sm">
+                    	<option value="未知">未知</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※采购方式</label>
+                <div class="col-sm-5">
+                	<select name="purchMethod" id="purchMethod" class="form-control input-sm">
+                    	<option value="未知">未知</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※意向产品</label>
+                <div class="col-sm-5">
+                	<select name="intentionPlan" id="intentionPlan" class="form-control input-sm">
+                    	
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※客户预算</label>
+                <div class="col-sm-6">
+                	<input type="text" name="custBudget" id="custBudget" class="form-control input-sm" placeholder="请输入客户预算"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※上线时间要求</label>
+                <div class="col-sm-6">
+                	<input type="text" name="lineTimeRequire" id="lineTimeRequire" class="form-control input-sm" placeholder="请输入上线时间要求"/>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   
+   
+   <div class="row">
+    	<div class="col-sm-10">
+        	<div class="form-group" id="importRequire">
+            	
+            </div>
+        
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-sm-10">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">其他备注内容</label>
+                <div class="col-sm-9">
+                	<textarea class="form-control" id="remarksOther"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">维护描述</h5>
+    <div class="row">
+    	<div class="col-sm-10">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">维护描述</label>
+                <div class="col-sm-9">
+                	<textarea class="form-control" id="remarksDefend"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+   	<div class="row">
+    	<div class="col-sm-3 col-sm-offset-4">
+        	<input  type="button" onclick="updateCust()" class="btn btn-success" value="保存"/>
+            <a class="btn btn-warning" href="javascript:history.go(-1)">返回上一级</a>
+        </div>
+    </div>
+</form>
+<script>
+	var custIdStr = location.search.substr(1);
+	var custId = custIdStr.split('=')[1];
+	alert(custId);
+    window.onload = function() {
+    	//获取意向产品
+    	var contentPlan = document.getElementById('intentionPlan');
+	    var tmpPlan = '';
+        $.ajax({
+            url: '/user/getPlan?planType=意向产品',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectPlanHead = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpPlan += '<option>'+data[i]+'</option>';
+                };
+                tmpPlan = selectPlanHead + tmpPlan;
+                contentPlan.innerHTML = tmpPlan;
+                tmpPlan = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        //获取主营业务
+        var contentMainBusi = document.getElementById('mainBusi');
+        var tmpMainBusi = ''
+        $.ajax({
+            url: '/user/getMainBusi',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectMainBusiHead = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpMainBusi += '<option>'+data[i]+'</option>';
+                };
+                tmpMainBusi = selectMainBusiHead + tmpMainBusi;
+                contentMainBusi.innerHTML = tmpMainBusi;
+                tmpMainBusi = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        //获取企业类型
+        var contentBusiType = document.getElementById('busiType');
+        var tmpBusiType = ''
+        $.ajax({
+            url: '/user/getBusiType',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectBusiTypeHead = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpBusiType += '<option>'+data[i]+'</option>';
+                };
+                tmpBusiType = selectBusiTypeHead + tmpBusiType;
+                contentBusiType.innerHTML = tmpBusiType;
+                tmpBusiType = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        //获取运作资源主类型
+        var contentOperResources = document.getElementById('operResources');
+        var tmpOperResources = ''
+        $.ajax({
+            url: '/user/getOperResources',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectOperResourcesHead = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpOperResources += '<option>'+data[i]+'</option>';
+                };
+                tmpOperResources = selectOperResourcesHead + tmpOperResources;
+                contentOperResources.innerHTML = tmpOperResources;
+                tmpOperResources = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        //获取联系人身份
+        var contentPersonShenfen = document.getElementById('personShenfen');
+        var tmpPersonShenfen = ''
+        $.ajax({
+            url: '/user/getPersonShenfen',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectPersonShenfenHead = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpPersonShenfen += '<option>'+data[i]+'</option>';
+                };
+                tmpPersonShenfen = selectPersonShenfenHead + tmpPersonShenfen;
+                contentPersonShenfen.innerHTML = tmpPersonShenfen;
+                tmpPersonShenfen = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        //获取采购动机
+        var contentPurchMotiva = document.getElementById('purchMotiva');
+        var tmpPurchMotiva = ''
+        $.ajax({
+            url: '/user/getPurchMotiva',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectPurchMotivaHead = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpPurchMotiva += '<option>'+data[i]+'</option>';
+                };
+                tmpPurchMotiva = selectPurchMotivaHead + tmpPurchMotiva;
+                contentPurchMotiva.innerHTML = tmpPurchMotiva;
+                tmpPurchMotiva = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        //获取采购方式
+        var contentPurchMethod = document.getElementById('purchMethod');
+        var tmpPurchMethod = ''
+        $.ajax({
+            url: '/user/getPurchMethod',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectPurchMethodHead = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpPurchMethod += '<option>'+data[i]+'</option>';
+                };
+                tmpPurchMethod = selectPurchMethodHead + tmpPurchMethod;
+                contentPurchMethod.innerHTML = tmpPurchMethod;
+                tmpPurchMethod = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        //获取重点需求
+        var contentImportRequire = document.getElementById('importRequire');
+        var tmpImportRequire = ''
+        $.ajax({
+            url: '/user/getImportRequire',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectImportRequireHead = '<label class="col-sm-3 control-label">※重点需求内容</label>';
+                for (var i=0;i<data.length;i++){
+                	//<input type="checkbox" name="favorite" value="打单录单" />打单录单
+                	tmpImportRequire += '<input type="checkbox" name="favorite" value="'+data[i]+'" />'+data[i];
+                };
+                tmpImportRequire = selectImportRequireHead + tmpImportRequire;
+                contentImportRequire.innerHTML = tmpImportRequire;
+                tmpImportRequire = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        
+        //将客户信息填写到对应的地方
+        var contentCustName = document.getElementById('custName');
+        var contentStockSizes = document.getElementById('stockSizes');
+        var contentPlantArea = document.getElementById('plantArea');
+        var contentDayCarAmount = document.getElementById('dayCarAmount');
+        var contentDayAveOrder = document.getElementById('dayAveOrder');
+        var contentRemarks = document.getElementById('remarks');
+        var contentPersonName = document.getElementById('personName');
+        var contentPersonZhiwei = document.getElementById('personZhiwei');
+        var contentPersonPhone = document.getElementById('personPhone');
+        var contentOtherPhone1 = document.getElementById('otherPhone1');
+        var contentOtherPhone2 = document.getElementById('otherPhone2');
+        var contentOtherPhone3 = document.getElementById('otherPhone3');
+        var contentOtherPersonName = document.getElementById('otherPersonName');
+        var contentCustBudget = document.getElementById('custBudget');
+        var contentLineTimeRequire = document.getElementById('lineTimeRequire');
+        var contentSex = document.getElementById('sex');
+        var contentImportRequireCheck = document.getElementsByName("favorite");
+        $.ajax({
+            url: '/user/getCustById?custId='+custId,
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	contentCustName.value=data.custName;
+            	contentStockSizes.value=data.stockSizes;
+            	contentPlantArea.value=data.plantArea;
+            	contentDayCarAmount.value=data.dayCarAmount;
+            	contentDayAveOrder.value=data.dayAveOrder;
+            	contentRemarks.value=data.remarks;
+            	contentPersonName.value=data.personName;
+            	contentPersonZhiwei.value=data.personZhiwei;
+            	contentPersonPhone.value=data.personPhone;
+            	contentOtherPhone1.value=data.otherPhone1;
+            	contentOtherPhone2.value=data.otherPhone2;
+            	contentOtherPhone3.value=data.otherPhone3;
+            	contentOtherPersonName.value=data.otherPersonName;
+            	contentCustBudget.value=data.custBudget;
+            	contentLineTimeRequire.value=data.lineTimeRequire;
+            	//企业类型
+            	for (var i=0;i<contentBusiType.options.length;i++){
+            		if (data.busiType==contentBusiType.options[i].value){
+            			contentBusiType[i].selected = 'selected';
+                        break;
+            		}
+            	}
+            	//主营业务
+            	for (var i=0;i<contentMainBusi.options.length;i++){
+            		if (data.mainBusi==contentMainBusi.options[i].value){
+            			contentMainBusi[i].selected = 'selected';
+                        break;
+            		}
+            	}
+            	//运作资源主类型
+            	for (var i=0;i<contentOperResources.options.length;i++){
+            		if (data.operResources==contentOperResources.options[i].value){
+            			contentOperResources[i].selected = 'selected';
+                        break;
+            		}
+            	}
+            	//联系人身份
+            	for (var i=0;i<contentPersonShenfen.options.length;i++){
+            		if (data.personShenfen==contentPersonShenfen.options[i].value){
+            			contentPersonShenfen[i].selected = 'selected';
+                        break;
+            		}
+            	}
+            	//采购动机
+            	for (var i=0;i<contentPurchMotiva.options.length;i++){
+            		if (data.purchMotiva==contentPurchMotiva.options[i].value){
+            			contentPurchMotiva[i].selected = 'selected';
+                        break;
+            		}
+            	}
+            	//采购方式
+            	for (var i=0;i<contentPurchMethod.options.length;i++){
+            		if (data.purchMethod==contentPurchMethod.options[i].value){
+            			contentPurchMethod[i].selected = 'selected';
+                        break;
+            		}
+            	}
+            	//意向产品
+            	for (var i=0;i<contentPlan.options.length;i++){
+            		if (data.intentionPlan==contentPlan.options[i].value){
+            			contentPlan[i].selected = 'selected';
+                        break;
+            		}
+            	}
+            	//性别
+            	for (var i=0;i<contentSex.options.length;i++){
+            		if (data.sex==contentSex.options[i].value){
+            			contentSex[i].selected = 'selected';
+                        break;
+            		}
+            	}
+            	//重点需求
+            	var val = data.importRequire.split(" ");
+            	for (var i=0;i<contentImportRequireCheck.length;i++){
+            		for(j=0;j<val.length;j++){
+                        if(contentImportRequireCheck[i].value == val[j]){
+                        	contentImportRequireCheck[i].checked = true;
+                        }
+                    }
+            	}
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+    }
+    
+    function updateCust(){
+        var custName = $("#custName").val();
+        var busiType = $("#busiType").val();
+        var mainBusi = $("#mainBusi").val();
+        var operResources = $("#operResources").val();
+        var stockSizes = $("#stockSizes").val();
+        var plantArea = $("#plantArea").val();
+        var dayCarAmount = $("#dayCarAmount").val();
+        var dayAveOrder = $("#dayAveOrder").val();
+        var remarks = $("#remarks").val();
+        var personName = $("#personName").val();
+        var sex = $("#sex").val();
+        var personShenfen = $("#personShenfen").val();
+		var personZhiwei = $("#personZhiwei").val();
+        var personPhone = $("#personPhone").val();
+		var otherPhone1 = $("#otherPhone1").val();
+        var otherPhone2 = $("#otherPhone2").val();
+		var otherPhone3 = $("#otherPhone3").val();
+        var otherPersonName = $("#otherPersonName").val();
+		var purchMotiva = $("#purchMotiva").val();
+		var purchMethod = $("#purchMethod").val();
+		var intentionPlan = $("#intentionPlan").val();
+		var custBudget = $("#custBudget").val();
+		var lineTimeRequire = $("#lineTimeRequire").val();
+		var items = document.getElementsByName("favorite");
+		var remarksOther = $("#remarksOther").val();
+		var importRequire = '';
+		for (i = 0; i < items.length; i++) {                   
+            if(items[i].checked){
+    			importRequire += items[i].value + ' ';
+            }
+        }; 
+        var remarksDefend = $("#remarksDefend").val()
+        var cust = {};
+        cust.custId = custId;
+        cust.custName = custName;
+        cust.busiType = busiType;
+        cust.mainBusi = mainBusi;
+        cust.operResources = operResources;
+        cust.stockSizes = stockSizes;
+        cust.plantArea = plantArea;
+        cust.dayCarAmount = dayCarAmount;
+        cust.dayAveOrder = dayAveOrder;
+        cust.remarks = remarks;
+        cust.personName = personName;
+        cust.sex = sex;
+        cust.personShenfen = personShenfen;
+		cust.personZhiwei = personZhiwei;
+        cust.personPhone = personPhone;
+		cust.otherPhone1 = otherPhone1;
+        cust.otherPhone2 = otherPhone2;
+		cust.otherPhone3 = otherPhone3;
+        cust.otherPersonName = otherPersonName;
+		cust.purchMotiva = purchMotiva;
+		cust.purchMethod = purchMethod;
+		cust.intentionPlan = intentionPlan;
+		cust.custBudget = custBudget;
+		cust.lineTimeRequire = lineTimeRequire;
+		cust.importRequire = importRequire;
+		cust.remarksOther = remarksOther;
+		cust.remarksDefend = remarksDefend;
+        
+		//判断必选
+		var bol = true;
+		if(custName == '' || custName == null){
+			bol = false;
+			alert("客户名称不能为空");
+		}else if(busiType == '未知' || busiType == null){
+			bol = false;
+			alert("企业类型不能为空");
+		}else if(mainBusi == '未知' || mainBusi == null){
+			bol = false;
+			alert("主营业务不能为空");
+		}else if(operResources == '未知' || operResources == null){
+			bol = false;
+			alert("运作资源主类型不能为空");
+		}else if(stockSizes == '' || stockSizes == null){
+			bol = false;
+			alert("站点/仓库数量不能为空");
+		}else if(plantArea == '' || plantArea == null){
+			bol = false;
+			alert("仓库面积不能为空");
+		}else if(dayCarAmount == '' || dayCarAmount == null){
+			bol = false;
+			alert("日用车辆数量不能为空");
+		}else if(dayAveOrder == '' || dayAveOrder == null){
+			bol = false;
+			alert("日均订单量不能为空");
+		}else if(personName == '' || personName == null){
+			bol = false;
+			alert("联系人不能为空");
+		}else if(sex == '未知' || sex == null){
+			bol = false;
+			alert("性别不能为空");
+		}else if(personShenfen == '未知' || personShenfen == null){
+			bol = false;
+			alert("联系人身份不能为空");
+		}else if(personZhiwei == '' || personZhiwei == null){
+			bol = false;
+			alert("联系人职位不能为空");
+		}else if(personPhone == '' || personPhone == null){
+			bol = false;
+			alert("联系方式不能为空");
+		}else if(purchMotiva == '未知' || purchMotiva == null){
+			bol = false;
+			alert("采购动机不能为空");
+		}else if(purchMethod == '未知' || purchMethod == null){
+			bol = false;
+			alert("采购方式不能为空");
+		}else if(intentionPlan == '未知' || intentionPlan == null){
+			bol = false;
+			alert("意向产品不能为空");
+		}else if(custBudget == '' || custBudget == null){
+			bol = false;
+			alert("客户预算不能为空");
+		}else if(lineTimeRequire == '' || lineTimeRequire == null){
+			bol = false;
+			alert("上线时间要求不能为空");
+		}else if(importRequire == '' || importRequire == null){
+			bol = false;
+			alert("重点需求内容不能为空");
+		}else{
+			getData();
+		}
+
+        
+        function getData(){
+        	$.ajax({
+                url: '/user/updateCust',
+                type: "post",
+                dataType: "json",
+				data: JSON.stringify(cust),
+                contentType: "application/json;charset-UTF-8",
+                success: function(data) {
+                	//window.location.href=data.url;
+                	window.history.back(-1); 
+                },
+                error: function(err) {
+                    alert('请求数据失败');
+                }
+            })
+        }
+	}
+    
+  </script>
+</body>
+</html>

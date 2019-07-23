@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="../../../css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="../../../js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="../../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div style="padding:0px; margin:0px;">
+ <ul class="breadcrumb" style="  margin:0px; " >
+    	<li>市场</li>
+        <li>销售线索</li>
+        <li>创建线索</li>
+    </ul>
+</div>
+
+<form action="/user/insertClue" method="post" onsubmit="return check()" class="form-horizontal">
+   
+    <h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">线索信息</h5>
+	<div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※ 客户来源</label>
+                <div class="col-sm-7">
+                	<input type="text" name="custSource" id="custSource" class="form-control input-sm" placeholder="请输入客户来源"/><span id="tsCustSource" style="display: none">客户来源不能为空</span>
+                </div>
+            </div>
+        
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※ 联系方式</label>
+                <div class="col-sm-7">
+                	<input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="请输入联系方式"/><span id="tsPhone" style="display: none">联系方式不能为空</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 开始2 -->
+	<div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">联系人</label>
+                <div class="col-sm-5">
+                	<input type="text" name="personName" id="personName" class="form-control input-sm" placeholder="请输入联系人"/>
+                </div>
+            </div>
+        
+        </div>
+        <div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">企业名称</label>
+                <div class="col-sm-5">
+                	<input type="text" name="custName" id="custName" class="form-control input-sm" placeholder="请输入企业名称"/>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <!-- 结束2 -->
+    <!-- 开始3 -->
+	<div class="row">
+    	
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">省份</label>
+                <div class="col-sm-4">
+                		<select class="form-control input-sm" id="province" name="province">
+                        	<option>未知</option>
+                            <option>安徽</option>
+                            <option>澳门</option>
+                            <option>北京</option>
+                            <option>福建</option>
+                            <option>甘肃</option>
+                            <option>广东</option>
+                            <option>广西</option>
+                            <option>贵州</option>
+                            <option>海南</option>
+                            <option>河北</option>
+                            <option>河南</option>
+                            <option>黑龙江</option>
+                            <option>湖北</option>
+                            <option>湖南</option>
+                            <option>吉林</option>
+                            <option>江苏</option>
+                            <option>江西</option>
+                            <option>辽宁</option>
+                            <option>内蒙古</option>
+                            <option>宁夏</option>
+                            <option>青海</option>
+                            <option>山东</option>
+                            <option>山西</option>
+                            <option>陕西</option>
+                            <option>上海</option>
+                            <option>四川</option>
+                            <option>台湾</option>
+                            <option>天津</option>
+                            <option>西藏</option>
+                            <option>香港</option>
+                            <option>新疆</option>
+                            <option>云南</option>
+                            <option>浙江</option>
+                            <option>重庆</option>
+                        </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">意向产品</label>
+                <div class="col-sm-4">
+                		<select class="form-control input-sm" id="intentionPlan" name="intentionPlan">
+                        	
+                        </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 结束3 -->
+    
+    
+   	<div class="row">
+    	<div class="col-sm-3 col-sm-offset-4">
+        	<input  type="submit" class="btn btn-success" value="保存"/>
+            <input  type="reset" class="btn  btn-danger" onclick = "closeDialog()" value="取消"/>
+        </div>
+    </div>
+</form>
+
+<script>
+	function closeDialog(){
+		window.location.href='/pages/view/system/staffinfo/staffinfo_list.html';
+	}
+	
+
+    window.onload = function() {
+        var url = '/user/getPlan?planType=意向产品';
+        var content = document.getElementById('intentionPlan');
+        var tmp = '';
+        // 进入页面初始化请求第一页数据
+        getPlan();
+ 
+        // 使用ajax函数请求数据并渲染到页面
+        function getPlan() {
+            content.innerHTML = '正在加载...';
+            $.ajax({
+                url: url,
+                type: "get",
+                dataType: "json",
+                success: function(data) {
+                	var selectHead = '<option>未知</option>';
+                    for (var i=0;i<data.length;i++){
+                    	tmp += '<option>'+data[i]+'</option>';
+                    };
+                    tmp = selectHead + tmp;
+                    content.innerHTML = tmp;
+                    tmp = '';
+                },
+                error: function(err) {
+                    alert('请求数据失败');
+                }
+            })
+        }
+ 
+    }
+    
+    function check() {
+        var custSource = $("#custSource").val();
+        var phone = $("#phone").val();
+        var personName = $("#personName").val();
+        var custName = $("#custName").val();
+        var province = $("#province").val();
+        var plan = $("#intentionPlan").val();
+        var clue = {};
+        if(custSource=="" || custSource==null || phone=="" || phone==null){
+        	if(custSource=="" || custSource==null){
+            	alert("客户线索不能为空");
+            	document.getElementById("tsCustSource").style.display='block';
+            	document.getElementById("tsCustSource").style.color='red';
+            }
+        	else{
+        		document.getElementById("tsCustSource").style.display='none';
+        	};
+            if(phone=="" || phone==null){
+            	alert(phone=="" || phone==null);
+        		document.getElementById("tsPhone").style.display='block';
+            	document.getElementById("tsPhone").style.color='red';
+        	}
+            else{
+            	document.getElementById("tsPhone").style.display='none';
+            };
+            return false;
+        }
+        else{
+        	document.getElementById("tsPhone").style.display='none';
+        	document.getElementById("tsCustSource").style.display='none';
+        	return true;
+        }
+        
+    }
+    
+    </script>
+
+</body>
+</html>

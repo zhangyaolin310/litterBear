@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.mgc.dao.mapper.ContractMapper">
+
+  
+  <select id="selectContractInfo" resultType="com.zhang.mgc.model.Contract">
+  	select 
+  	cl.user_id as userId,
+	cu.cust_id as custId,(select user_name from user where user_id = cl.user_id) as userName,co.contract_id contractId,
+	cu.cust_name as custName,sp.show_plan_name as showPlanName,sp.intentional_services as intentionalServices,
+	sp.intention_trading_price as intentionTradingPrice,cu.contract_status as contractStatus,cu.create_time as custCreateTime,
+	sp.show_plan_end_time as showPlanEndTime,co.contract_time as contractTime,
+	(select make_collections_time from make_collections order by make_collections_time desc limit 1) as endCustCreateTime
+	from customer cu
+	left join contract co
+	on cu.cust_id = co.cust_id
+	left join show_plan sp
+	on cu.cust_id = sp.cust_id
+	left join clue cl
+	on cu.clue_id = cl.clue_id
+	left join make_collections mc
+	on mc.contract_id = co.contract_id
+	where contract_status is not null
+	order by cu.create_time desc limit #{startSize} , #{endSize}
+  </select>
+  
+  <select id="getContractPage" resultType="java.lang.String">
+  	select count(*) from (
+  	select 
+  	cl.user_id as userId,
+	cu.cust_id as custId,(select user_name from user where user_id = cl.user_id) as userName,co.contract_id contractId,
+	cu.cust_name as custName,sp.show_plan_name as showPlanName,sp.intentional_services as intentionalServices,
+	sp.intention_trading_price as intentionTradingPrice,cu.contract_status as contractStatus,cu.create_time as custCreateTime,
+	sp.show_plan_end_time as showPlanEndTime,co.contract_time as contractTime,
+	(select make_collections_time from make_collections order by make_collections_time desc limit 1) as endCustCreateTime
+	from customer cu
+	left join contract co
+	on cu.cust_id = co.cust_id
+	left join show_plan sp
+	on cu.cust_id = sp.cust_id
+	left join clue cl
+	on cu.clue_id = cl.clue_id
+	left join make_collections mc
+	on mc.contract_id = co.contract_id
+	where contract_status is not null) a
+  </select>
+  
+</mapper>

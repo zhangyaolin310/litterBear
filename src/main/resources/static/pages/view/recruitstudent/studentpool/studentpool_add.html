@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/pages/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/pages/js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/pages/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div style="padding:0px; margin:0px;">
+ <ul class="breadcrumb" style="  margin:0px; " >
+    	<li><a href="#">市场</a></li>
+        <li>产品演示</li>
+        <li>演示录入</li>
+    </ul>
+</div>
+
+<form action="##" method="post" onsubmit="return false" class="form-horizontal">
+    <h5 class="page-header alert-info" style="padding:10px; margin:0px; margin-bottom:5px;">基本信息</h5>
+	<div class="row">
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">※演示产品</label>
+                <div class="col-sm-5">
+                	<select name="intentionPlan" id="intentionPlan" class="form-control input-sm">
+                    	
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※演示开始时间</label>
+                <div class="col-sm-9">
+                	<input type="text" name="showPlanStartTime" id="showPlanStartTime" class="form-control input-sm" placeholder="请输入演示开始时间"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※演示结束时间</label>
+                <div class="col-sm-9">
+                	<input type="text" name="showPlanEndTime" id="showPlanEndTime" class="form-control input-sm" placeholder="请输入演示结束时间"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-sm-10">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※客户参与人员及身份</label>
+                <div class="col-sm-9">
+                	<textarea class="form-control" id="custNameAndShenfen"></textarea>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-sm-10">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">演示过程异议及应对</label>
+                <div class="col-sm-9">
+                	<textarea class="form-control" id="objectionReply"></textarea>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <!--开始 -->
+    <div class="row">
+        <div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※功能匹配度</label>
+                <div class="col-sm-6">
+                	<input type="text" name="functionMatching" id="functionMatching" class="form-control input-sm" placeholder="请输入功能匹配度"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">※需求匹配表的seafile目录</label>
+                <div class="col-sm-6">
+                	<input type="text" name="seafileDirectorie" id="seafileDirectorie" class="form-control input-sm" placeholder="请输入需求匹配表的seafile目录"/>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+	        <div class="form-group">
+	            <label class="col-sm-3 control-label">※是否达成商务意向</label>
+	            <div class="col-sm-5">
+	            	<select name="businessIntention" id=businessIntention class="form-control input-sm">
+	                    <option value="未知">未知</option>
+	                    <option value="是">是</option>
+	                    <option value="否">否</option>
+	                </select>
+	             </div>
+	         </div>
+	     </div>
+        <div class="col-sm-5">
+	        <div class="form-group">
+	            <label class="col-sm-3 control-label">意向服务方式</label>
+	            <div class="col-sm-5">
+	            	<select name="intentionalServices" id=intentionalServices class="form-control input-sm">
+	                    <option value="未知">未知</option>
+	                </select>
+	             </div>
+	         </div>
+	     </div>
+    </div>
+   <!--结束 -->
+   <!--开始 -->
+   <div class="row">
+    	<div class="col-sm-5">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">意向交付日期</label>
+                <div class="col-sm-6">
+                	<input type="text" name="intentionalDeliveryTime" id="intentionalDeliveryTime" class="form-control input-sm" placeholder="请输入意向交付日期"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="form-group">
+            	<label class="col-sm-3 control-label">意向交易价格</label>
+                <div class="col-sm-6">
+                	<input type="text" name="intentionTradingPrice" id="intentionTradingPrice" class="form-control input-sm" placeholder="请输入意向交易价格"/>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--结束 -->
+   <div class="row">
+    	<div class="col-sm-10">
+        	<div class="form-group">
+            	<label class="col-sm-3 control-label">其他要求条件</label>
+                <div class="col-sm-9">
+                	<textarea class="form-control" id="otherRequirement"></textarea>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+   	<div class="row">
+    	<div class="col-sm-3 col-sm-offset-4">
+        	<input  type="button" onclick="insertShowPlan()" class="btn btn-success" value="保存"/>
+            <a class="btn btn-warning" href="javascript:history.go(-1)">返回上一级</a>
+        </div>
+    </div>
+</form>
+<script>
+	var custIdStr = location.search.substr(1);
+	var custId = custIdStr.split('=')[1];
+    window.onload = function() {
+    	//获取意向产品
+    	var contentPlan = document.getElementById('intentionPlan');
+	    var tmpPlan = '';
+        $.ajax({
+            url: '/user/getPlan?planType=演示产品',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectPlanHead = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpPlan += '<option>'+data[i]+'</option>';
+                };
+                tmpPlan = selectPlanHead + tmpPlan;
+                contentPlan.innerHTML = tmpPlan;
+                tmpPlan = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+        //获取意向服务方式
+        var contentIntentionalServices = document.getElementById('intentionalServices');
+        var tmpIntentionalServices = ''
+        $.ajax({
+            url: '/user/getIntentionalServices',
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+            	var selectIntentionalServices = '<option>未知</option>';
+                for (var i=0;i<data.length;i++){
+                	tmpIntentionalServices += '<option>'+data[i]+'</option>';
+                };
+                tmpIntentionalServices = selectIntentionalServices + tmpIntentionalServices;
+                contentIntentionalServices.innerHTML = tmpIntentionalServices;
+                tmpIntentionalServices = '';
+            },
+            error: function(err) {
+                alert('请求数据失败');
+            }
+        })
+    }
+    
+    function insertShowPlan(){
+        var intentionPlan = $("#intentionPlan").val();
+        var showPlanStartTime = $("#showPlanStartTime").val();
+        var showPlanEndTime = $("#showPlanEndTime").val();
+        var custNameAndShenfen = $("#custNameAndShenfen").val();
+        var objectionReply = $("#objectionReply").val();
+        var functionMatching = $("#functionMatching").val();
+        var seafileDirectorie = $("#seafileDirectorie").val();
+        var businessIntention = $("#businessIntention").val();
+        var intentionalServices = $("#intentionalServices").val();
+        var intentionalDeliveryTime = $("#intentionalDeliveryTime").val();
+        var intentionTradingPrice = $("#intentionTradingPrice").val();
+        var otherRequirement = $("#otherRequirement").val();
+        var showPlan = {};
+        showPlan.custId = custId;
+        showPlan.showPlanName = intentionPlan;
+        showPlan.showPlanStartTime = showPlanStartTime;
+        showPlan.showPlanEndTime = showPlanEndTime;
+        showPlan.custNameAndShenfen = custNameAndShenfen;
+        showPlan.objectionReply = objectionReply;
+        showPlan.functionMatching = functionMatching;
+        showPlan.seafileDirectorie = seafileDirectorie;
+        showPlan.businessIntention = businessIntention;
+        showPlan.intentionalServices = intentionalServices;
+        showPlan.intentionalDeliveryTime = intentionalDeliveryTime;
+        showPlan.intentionTradingPrice = intentionTradingPrice;
+        showPlan.otherRequirement = otherRequirement;
+		//判断必选
+		var bol = true;
+		if(intentionPlan == '未知' || intentionPlan == null){
+			bol = false;
+			alert("演示产品不能为空");
+		}else if(showPlanStartTime == '' || showPlanStartTime == null){
+			bol = false;
+			alert("演示开始时间不能为空");
+		}else if(showPlanEndTime == '' || showPlanEndTime == null){
+			bol = false;
+			alert("演示结束时间不能为空");
+		}else if(custNameAndShenfen == '' || custNameAndShenfen == null){
+			bol = false;
+			alert("客户参与人员及身份不能为空");
+		}else if(functionMatching == '' || functionMatching == null){
+			bol = false;
+			alert("功能匹配度不能为空");
+		}else if(seafileDirectorie == '' || seafileDirectorie == null){
+			bol = false;
+			alert("需求匹配表的seafile目录不能为空");
+		}else if(businessIntention == '未知' || businessIntention == null){
+			bol = false;
+			alert("是否达成商务意向不能为空");
+		}else{
+			getData();
+		}
+
+        
+        function getData(){
+        	$.ajax({
+                url: '/user/insertShowPlan',
+                type: "post",
+                dataType: "json",
+				data: JSON.stringify(showPlan),
+                contentType: "application/json;charset-UTF-8",
+                success: function(data) {
+                	window.location.href=data.url;
+                },
+                error: function(err) {
+                    alert('请输入正确的参数');
+                }
+            })
+        }
+	}
+    
+  </script>
+</body>
+</html>

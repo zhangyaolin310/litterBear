@@ -1,0 +1,376 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/pages/css/bootstrap.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/pages/js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/pages/js/bootstrap.min.js"></script>
+<style data-for="result" type="text/css" id="css_newi_result">
+#page{font:14px arial;white-space:nowrap;padding-left:35px}
+#page a,#page strong{display:inline-block;vertical-align:text-bottom;height:66px;text-align:center;line-height:34px;text-decoration:none;overflow:hidden;margin-right:9px;background:#fff}
+#page a{cursor:pointer}
+#page a:hover{background:0 0}
+#page .n:hover,#page a:hover .pc{background:#f2f8ff;border:1px solid #38f}
+#page .n{height:34px;padding:0 18px;border:1px solid #e1e2e3}
+#page span{display:block}
+#page .pc{width:34px;height:34px;border:1px solid #e1e2e3;cursor:pointer}
+#page .fk{width:24px;height:24px;margin-bottom:6px;margin-left:6px;cursor:pointer}
+#page strong .fk,#page strong .pc{cursor:auto}
+#page .fk .c-icon-bear-pn{top:-3px;position:relative}
+#page .fkd .c-icon-bear-pn{top:3px;position:relative}
+#page .fk_cur .c-icon-bear-p{top:-2px;position:relative}
+#page strong .pc{border:0;width:36px;height:36px;line-height:36px}
+#page .nums{display:inline-block;vertical-align:text-bottom;height:36px;line-height:36px;margin-left:10px}
+
+.pagination {
+	padding:5px;
+	font-family: '微软雅黑',Arial,Verdana,arial,serif;
+}
+.pagination ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0;
+}
+.pagination ul li {
+    padding: 0 10px;
+    vertical-align: bottom;
+    display: inline-block;
+    font-size: 14px;
+    min-width: 36px;
+    min-height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: -1px;
+    color: #606266;
+    border: 1px solid #ebebeb;
+    height: 30px;
+    transition: all .3s;
+}
+.pagination ul li:hover {
+    color: #80bd01;
+}
+.pagination ul li.totalPage:hover {
+    color: #606266;
+}
+.pagination  li.active {
+    color: #80bd01;
+}
+.pagination li.disabled {
+    cursor: not-allowed;
+}
+.pagination li.disabled:hover {
+    color: #ccc;
+}
+.pagination li.totalPage {
+    background: transparent;
+    cursor: default;
+    border: none;
+    padding: 0 6px;
+}
+ 
+.pagination li.totalPage:hover {
+    transform: none;
+    background-color: #ffffff;
+}
+.pagination li input {
+    -webkit-appearance: none;
+    background-color: #fff;
+    background-image: none;
+    border: 0;
+    border-bottom: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    outline: none;
+    padding: 3px 5px;
+    transition: border-color .2s;
+    width: 40px;
+    height: 25px;
+    margin: 0 6px;
+}
+.pagination li input:focus{
+    border-color: #80bd01;
+}
+.pagination{
+    user-select: none;
+}
+.pagination ul:nth-child(2){
+    border-radius: 6px;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+<!--分配弹出框-->
+.black_overlay{ 
+            display: none; 
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=88); 
+        } 
+ .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 25%; 
+            left: 25%; 
+            width: 55%; 
+            height: 55%; 
+            padding: 20px; 
+            border: 10px solid orange; 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+        } 
+</style>
+</head>
+
+<body>
+<div style="padding:0px; margin:0px;">
+ <ul class="breadcrumb" style="  margin:0px; " >
+    	<li>市场</li>
+        <li>客户跟进</li>
+        <li>维护记录</li>
+    </ul>
+</div>
+<div class="row alert alert-info"  style="margin:0px; padding:3px;" >
+<form action="##" method="post" onsubmit="return false" class="form-inline">
+     <div class="form-group">
+         <label class="" for="activstate">选择维护人员：</label>
+		 <select  class="form-control" id="userName">
+            <option>活动状态</option>
+         </select>	
+      </div>
+      <div class="form-group">
+         <label class="" for="activename">维护时间：</label>
+        <input type="email" class="form-control" id=defendTime placeholder="请输入维护时间">
+      </div>
+    <input type="button"   class="btn btn-danger"  onclick="selectDefendBySomething()"   value="查询"/>
+    </form>
+</div>
+<div class="row" style="padding:15px; padding-top:0px; ">
+	<table class="table  table-condensed table-striped" id="content" border="1">
+    	<tr>
+        	<th>编号</th>
+            <th>活动名称</th>
+            <th>负责人</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>活动状态</th>
+            <th>操作</th>
+        </tr>
+       	<tr>
+        	<td>1001</td>
+            <td>软件大赛</td>
+            <td>张三</td>
+            <td>2014-12-12 12:12:12</td>
+            <td>2014-12-22 12:12:12</td>
+            <td>准备中</td>
+            <th><a href="marketactive_update.html">修改</a> <a href="">删除</a></th>
+        </tr>                  
+    </table>
+</div>
+<!-- 分页DOM -->
+    <div id="pagination" class="pagination"></div>
+    <!-- 引入分页js -->
+    <script src="/pages/assets/js/pages.js"></script>
+    
+    <script src="/pages/assets/js/ajax.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+	    var url = '/user/getDefend?page=';
+	    var content = document.getElementById('content');
+	    var tmp = '';
+		var pageTotal = 0;
+		var dataTotal = 0;
+		
+		getXiaoshou();
+	    // 进入页面初始化请求第一页数据
+	    getData(1);
+	    getDefendPage();
+	    
+	    //获取销售人员
+	    function getXiaoshou(){
+	    	var contentUser = document.getElementById('userName');
+	        var tmpUser = '';
+	    	//获取销售人员名单
+	    	$.ajax({
+	            //几个参数需要注意一下
+	                type: "get",//方法类型
+	                dataType: "json",//预期服务器返回的数据类型
+	                url: '/user/getXiaoshou',//url
+	                success: function (data) {
+	                	var tableHead = '<option>选择销售人员</option>';
+	                	for(var i=0;i<data.length;i++){
+	                		tmpUser += '<option>'+data[i].userName+'</option>'
+	                	};
+	                	tmpUser = tableHead + tmpUser;
+	                	contentUser.innerHTML = tmpUser;
+	                    tmpUser = '';
+	                },
+	                error : function() {
+	                    alert("异常！");
+	                }
+	            });
+	    }
+	    
+	    //获取数据量
+	    function getDefendPage(){
+	    	$.ajax({
+	            url: '/user/getDefendPage?userName=&defendTime=',
+	            type: "get",
+	            cache: false, 
+                async :false,
+	            dataType: "json",
+	            success: function(data) {
+	            	dataTotal = data;
+	            	if(data % 10 == 0){
+	            		pageTotal = data / 10;
+	            	}else{
+	            		pageTotal = parseInt(data/10) + 1;
+	            	};
+	            },
+	            error: function(err) {
+	                alert('请求数据失败');
+	            }
+	        })
+	    }
+	
+	    // 使用ajax函数请求数据并渲染到页面
+	    function getData(page) {
+	        content.innerHTML = '正在加载...';
+	        $.ajax({
+	            url: url + page,
+	            type: "get",
+	            dataType: "json",
+	            success: function(data) {
+	                var tableHead = "<tr><th>客户号</th><th>客户名称</th><th>维护记录号</th><th>维护人员</th><th>维护时间</th><th>维护内容</th></tr>";
+	                
+	                for (var i=0;i<data.length;i++){
+	                	
+	                	tmp += '<tr><td>'+data[i].custId+'</td><td>'+data[i].custName+'</td><td>'+data[i].defendId+'</td><td>'+data[i].userName+'</td><td>'+data[i].defendTime+'</td><td>'+data[i].remarksDefend+'</td></tr>';
+	                	 
+	                };
+	                tmp = tableHead + tmp;
+	                content.innerHTML = tmp;
+	                tmp = '';
+	            },
+	            error: function(err) {
+	                alert('请求数据失败');
+	            }
+	        })
+	    }
+	
+	    // 示例化分页组件
+	    new myPagination({
+	        id: 'pagination',
+	        curPage: 1, //初始页码
+	        pageTotal: pageTotal, //总页数
+	        pageAmount: 10, //每页多少条
+	        dataTotal: dataTotal, //总共多少条数据
+	        pageSize: 5, //可选,分页个数
+	        showPageTotalFlag: true, //是否显示数据统计
+	        showSkipInputFlag: true, //是否支持跳转
+	        getPage: function(page) {
+	          // 点击分页按钮请求数据
+	            getData(page);
+	        }
+	    })
+	}
+	
+	function selectDefendBySomething(){
+		var url = '/user/selectDefendBySomething';
+        var content = document.getElementById('content');
+        var tmp = '';
+        var userName = $("#userName").val();
+        var defendTime = $("#defendTime").val();
+        var pageTotal = 0;
+ 		var dataTotal = 0;
+ 
+        // 进入页面初始化请求第一页数据
+        getData(1);
+        getPage();
+        function getPage(){
+        	$.ajax({
+                url: '/user/getDefendPage?userName='+userName+'&defendTime='+defendTime,
+                type: "get",
+                dataType: "json",
+                cache: false, 
+                async :false,
+                success: function(data) {
+                	dataTotal = data;
+                	if(data % 10 == 0){
+                		pageTotal = data / 10;
+                	}else{
+                		pageTotal = parseInt(data/10) + 1;
+                	};
+                },
+                error: function(err) {
+                    alert('请求数据失败');
+                }
+            })
+        }
+        function getData(page){
+        	content.innerHTML = '正在加载...';
+        	$.ajax({
+                //几个参数需要注意一下
+                    type: "post",//方法类型
+                    dataType: "json",//预期服务器返回的数据类型
+                    url: url,//url
+                    data: {"userName":userName,"defendTime":defendTime,"page":page},
+                    success: function (data) {
+                    	var tableHead = "<tr><th>客户号</th><th>客户名称</th><th>维护记录号</th><th>维护人员</th><th>维护时间</th><th>维护内容</th></tr>";
+    	                
+    	                for (var i=0;i<data.length;i++){
+    	                	
+    	                	tmp += '<tr><td>'+data[i].custId+'</td><td>'+data[i].custName+'</td><td>'+data[i].defendId+'</td><td>'+data[i].userName+'</td><td>'+data[i].defendTime+'</td><td>'+data[i].remarksDefend+'</td></tr>';
+    	                	 
+    	                };
+    	                tmp = tableHead + tmp;
+    	                content.innerHTML = tmp;
+    	                tmp = '';
+                    },
+                    error : function() {
+                        alert("异常！");
+                    }
+                });
+        }
+        
+     // 示例化分页组件
+        new myPagination({
+            id: 'pagination',
+            curPage: 1, //初始页码
+            pageTotal: pageTotal, //总页数
+            pageAmount: 10, //每页多少条
+            dataTotal: dataTotal, //总共多少条数据
+            pageSize: 5, //可选,分页个数
+            showPageTotalFlag: true, //是否显示数据统计
+            showSkipInputFlag: true, //是否支持跳转
+            getPage: function(page) {
+              // 点击分页按钮请求数据
+                getData(page);
+            }
+        })
+	}
+</script>
+</body>
+</html>
